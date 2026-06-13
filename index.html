@@ -28,16 +28,29 @@
   --accent:#4f8cff;
   --accent-2:#6ee7b7;
   --shadow:0 10px 30px rgba(0,0,0,.35);
+  --nav-bg:rgba(11,16,32,.85);
+}
+:root[data-theme="light"]{
+  --bg:#f7f9fc;
+  --bg-soft:#eef1f7;
+  --card:#ffffff;
+  --border:#e1e7f0;
+  --text:#16202e;
+  --muted:#54627a;
+  --accent:#2f6bff;
+  --accent-2:#0f9d77;
+  --shadow:0 10px 30px rgba(31,45,70,.10);
+  --nav-bg:rgba(247,249,252,.85);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background .3s ease,color .3s ease}
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
 .container{max-width:980px;margin:0 auto;padding:0 24px}
 
 /* Nav */
-nav{position:sticky;top:0;z-index:50;background:rgba(11,16,32,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+nav{position:sticky;top:0;z-index:50;background:var(--nav-bg);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
 .logo{font-weight:800;font-size:1.05rem;color:var(--text)}
 .logo span{color:var(--accent)}
@@ -47,6 +60,8 @@ nav{position:sticky;top:0;z-index:50;background:rgba(11,16,32,.85);backdrop-filt
 .lang-toggle{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden}
 .lang-toggle button{background:transparent;color:var(--muted);border:none;padding:6px 12px;font:inherit;font-size:.8rem;font-weight:600;cursor:pointer}
 .lang-toggle button.active{background:var(--accent);color:#fff}
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:36px;height:34px;border:1px solid var(--border);border-radius:8px;background:transparent;color:var(--muted);cursor:pointer;font-size:1rem;line-height:1;transition:color .15s,border-color .15s}
+.theme-toggle:hover{color:var(--text);border-color:var(--accent)}
 
 /* Hero */
 header{padding:90px 0 70px;background:
@@ -140,6 +155,7 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font
         <button id="btn-en" onclick="setLang('en')">EN</button>
         <button id="btn-es" onclick="setLang('es')">ES</button>
       </div>
+      <button id="theme-btn" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light/dark theme">🌙</button>
     </div>
   </div>
 </nav>
@@ -405,6 +421,23 @@ const i18n = {
     footer:'© <span id="year"></span> Roanny Lamas López · Hecho con cariño, alojado en GitHub Pages.'
   }
 };
+
+function applyTheme(theme){
+  if(theme==='light'){ document.documentElement.setAttribute('data-theme','light'); }
+  else { document.documentElement.removeAttribute('data-theme'); }
+  const b = document.getElementById('theme-btn'); if(b) b.textContent = theme==='light' ? '☀️' : '🌙';
+  const m = document.querySelector('meta[name="theme-color"]'); if(m) m.setAttribute('content', theme==='light' ? '#f7f9fc' : '#0b1020');
+}
+function toggleTheme(){
+  const next = document.documentElement.getAttribute('data-theme')==='light' ? 'dark' : 'light';
+  applyTheme(next);
+  try{ localStorage.setItem('theme', next); }catch(e){}
+}
+let savedTheme = 'dark';
+try{
+  savedTheme = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+}catch(e){}
+applyTheme(savedTheme==='light' ? 'light' : 'dark');
 
 function setLang(lang){
   document.documentElement.lang = lang;
