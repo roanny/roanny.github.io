@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://roanny.github.io/sitemap.xml
