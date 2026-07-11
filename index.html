@@ -18,6 +18,7 @@
 
 <!-- Favicon como archivo: los data-URI no se indexan para los resultados de búsqueda -->
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 
 <!-- Open Graph -->
 <meta property="og:title" content="Roanny Lamas López — Data Engineer">
@@ -125,6 +126,23 @@
   --glow-opacity: 0.16;
   --shadow: 0 18px 50px rgba(2, 8, 14, 0.55);
   --card-shadow: 0 16px 40px rgba(2, 8, 14, 0.45);
+  --card-grad-top: rgba(255, 255, 255, 0.03);
+  --card-grad-bottom: rgba(255, 255, 255, 0.008);
+
+  /* Tintes de acento (iguales en ambos temas) */
+  --tint-6: rgba(47, 214, 195, 0.06);
+  --tint-8: rgba(47, 214, 195, 0.08);
+  --tint-18: rgba(47, 214, 195, 0.18);
+  --tint-22: rgba(47, 214, 195, 0.22);
+  --tint-32: rgba(47, 214, 195, 0.32);
+  --tint-35: rgba(47, 214, 195, 0.35);
+  --tint-50: rgba(47, 214, 195, 0.5);
+
+  /* Motion */
+  --t-fast: 0.2s;
+  --t-base: 0.25s;
+  --t-slow: 0.3s;
+  --t-reveal: 0.7s;
 
   --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
   --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
@@ -158,6 +176,8 @@
   --glow-opacity: 0.10;
   --shadow: 0 18px 50px rgba(31, 45, 70, 0.14);
   --card-shadow: 0 16px 40px rgba(31, 45, 70, 0.12);
+  --card-grad-top: rgba(9, 55, 66, 0.045);
+  --card-grad-bottom: rgba(9, 55, 66, 0.015);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -175,10 +195,10 @@ body {
   font-size: 16.5px;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  transition: background .3s ease, color .3s ease;
+  transition: background var(--t-slow) ease, color var(--t-slow) ease;
 }
 
-::selection { background: rgba(47, 214, 195, 0.35); }
+::selection { background: var(--tint-35); }
 
 svg { max-width: 100%; }
 
@@ -246,7 +266,7 @@ a:hover { color: var(--cyan); }
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid transparent;
-  transition: border-color .3s ease, background .3s ease;
+  transition: border-color var(--t-slow) ease, background var(--t-slow) ease;
 }
 
 .nav.scrolled {
@@ -285,7 +305,7 @@ a:hover { color: var(--cyan); }
   color: var(--muted);
   font-size: 0.94rem;
   font-weight: 500;
-  transition: color .2s ease;
+  transition: color var(--t-fast) ease;
 }
 
 .nav-links a:hover, .nav-links a.active { color: var(--ink); }
@@ -303,14 +323,14 @@ a:hover { color: var(--cyan); }
   border-radius: 999px;
   padding: 7px 14px;
   cursor: pointer;
-  transition: all .2s ease;
+  transition: all var(--t-fast) ease;
 }
 
 .theme-toggle { padding: 7px 11px; font-size: 0.9rem; line-height: 1; }
 
 .lang-toggle:hover, .theme-toggle:hover {
   border-color: var(--turquoise);
-  background: rgba(47, 214, 195, 0.08);
+  background: var(--tint-8);
 }
 
 .hamburger {
@@ -331,7 +351,7 @@ a:hover { color: var(--cyan); }
   height: 2px;
   background: var(--ink);
   border-radius: 2px;
-  transition: transform .25s ease, opacity .25s ease;
+  transition: transform var(--t-base) ease, opacity var(--t-base) ease;
 }
 
 .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -351,7 +371,7 @@ a:hover { color: var(--cyan); }
   border-radius: 999px;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+  transition: transform var(--t-fast) ease, box-shadow var(--t-fast) ease, background var(--t-fast) ease, border-color var(--t-fast) ease;
 }
 
 /* El botón primario es una constante de marca: idéntico en ambos temas */
@@ -363,7 +383,7 @@ a:hover { color: var(--cyan); }
 .btn-primary:hover {
   color: #05242a;
   transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(47, 214, 195, 0.32);
+  box-shadow: 0 10px 28px var(--tint-32);
 }
 
 .btn-ghost {
@@ -375,7 +395,16 @@ a:hover { color: var(--cyan); }
 .btn-ghost:hover {
   color: var(--ink);
   border-color: var(--turquoise);
-  background: rgba(47, 214, 195, 0.07);
+  background: var(--tint-8);
+}
+
+.btn:active { transform: translateY(0); box-shadow: none; }
+
+.btn[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 /* ── Hero ─────────────────────────────────────────────── */
@@ -401,7 +430,7 @@ a:hover { color: var(--cyan); }
   text-transform: uppercase;
   color: var(--turquoise);
   border: 1px solid var(--line-strong);
-  background: rgba(47, 214, 195, 0.06);
+  background: var(--tint-6);
   border-radius: 999px;
   padding: 8px 16px;
   margin-bottom: 26px;
@@ -443,28 +472,12 @@ a:hover { color: var(--cyan); }
 
 .hero-sub strong { color: var(--ink); }
 
-.hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  list-style: none;
-  margin-bottom: 38px;
-}
-
-.hero-meta li {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--ink);
-  border: 1px solid var(--line);
-  background: var(--chip-bg);
-  border-radius: 8px;
-  padding: 6px 12px;
-}
+.hero-meta { margin-bottom: 38px; }
 
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; }
 
 /* ── Secciones ────────────────────────────────────────── */
-.section { padding: 92px 0; }
+.section { padding: 96px 0; }
 
 .section-alt {
   background: linear-gradient(180deg, transparent, var(--alt-band) 18%, var(--alt-band) 82%, transparent);
@@ -525,7 +538,7 @@ a:hover { color: var(--cyan); }
   width: 12px; height: 12px;
   border-radius: 50%;
   background: var(--turquoise);
-  box-shadow: 0 0 0 4px rgba(47, 214, 195, 0.18), 0 0 12px rgba(47, 214, 195, 0.5);
+  box-shadow: 0 0 0 4px var(--tint-18), 0 0 12px var(--tint-50);
 }
 
 .job-title { font-family: var(--font-display); font-size: 1.14rem; font-weight: 600; }
@@ -540,17 +553,7 @@ a:hover { color: var(--cyan); }
 
 .job-desc { color: var(--muted); font-size: 0.96rem; max-width: 72ch; }
 
-.tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
-
-.tag {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--turquoise);
-  background: rgba(47, 214, 195, 0.07);
-  border: 1px solid rgba(47, 214, 195, 0.22);
-  border-radius: 7px;
-  padding: 4px 9px;
-}
+.tags { margin-top: 13px; }
 
 /* ── Certificaciones ──────────────────────────────────── */
 .cards-grid {
@@ -565,11 +568,11 @@ a:hover { color: var(--cyan); }
   flex-direction: column;
   gap: 8px;
   padding: 26px 24px;
-  background: linear-gradient(170deg, var(--raise-strong), var(--raise));
+  background: linear-gradient(170deg, var(--card-grad-top), var(--card-grad-bottom));
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
-  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  transition: transform var(--t-base) ease, border-color var(--t-base) ease, box-shadow var(--t-base) ease;
 }
 
 .card::before {
@@ -579,7 +582,7 @@ a:hover { color: var(--cyan); }
   height: 1px;
   background: var(--grad-sea);
   opacity: 0;
-  transition: opacity .25s ease;
+  transition: opacity var(--t-base) ease;
 }
 
 .card:hover {
@@ -606,7 +609,7 @@ a:hover { color: var(--cyan); }
   background: var(--raise);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  transition: border-color .25s ease;
+  transition: border-color var(--t-base) ease;
 }
 
 .skill-group:hover { border-color: var(--line-strong); }
@@ -621,23 +624,35 @@ a:hover { color: var(--cyan); }
   margin-bottom: 16px;
 }
 
-.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+/* ── Chips (componente unificado con Coabana) ─────────── */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+}
 
 .chip {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: var(--ink);
   border: 1px solid var(--line);
   background: var(--chip-bg);
   border-radius: 8px;
-  padding: 5px 11px;
+  padding: 5px 10px;
+}
+
+.chip-accent {
+  color: var(--turquoise);
+  background: var(--tint-6);
+  border-color: var(--tint-22);
 }
 
 /* ── Educación e idiomas ──────────────────────────────── */
 .edu-card {
   max-width: 680px;
   padding: 28px 26px;
-  background: linear-gradient(170deg, var(--raise-strong), var(--raise));
+  background: linear-gradient(170deg, var(--card-grad-top), var(--card-grad-bottom));
   border: 1px solid var(--line);
   border-radius: var(--radius);
 }
@@ -710,7 +725,7 @@ a:hover { color: var(--cyan); }
 html.js .reveal {
   opacity: 0;
   transform: translateY(22px);
-  transition: opacity .7s ease, transform .7s ease;
+  transition: opacity var(--t-reveal) ease, transform var(--t-reveal) ease;
 }
 
 html.js .reveal.visible { opacity: 1; transform: none; }
@@ -740,7 +755,7 @@ html.js .reveal.visible { opacity: 1; transform: none; }
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--line-strong);
     transform: translateY(-130%);
-    transition: transform .3s ease;
+    transition: transform var(--t-slow) ease;
   }
 
   .nav-links.open { transform: translateY(0); }
@@ -805,10 +820,10 @@ html.js .reveal.visible { opacity: 1; transform: none; }
     </p>
     <h1 class="hero-title">Roanny <span class="grad">Lamas&nbsp;López</span></h1>
     <p class="hero-sub" data-i18n="headline"><strong>Data Engineer</strong> at Viajes El Corte Inglés — building scalable data ecosystems on Google Cloud.</p>
-    <ul class="hero-meta">
-      <li>📍 Montevideo, Uruguay</li>
-      <li data-i18n="meta_degree">🎓 Computer Science Engineer</li>
-      <li data-i18n="meta_exp">💼 Data · BI · Cloud</li>
+    <ul class="chips hero-meta">
+      <li class="chip">📍 Montevideo, Uruguay</li>
+      <li class="chip" data-i18n="meta_degree">🎓 Computer Science Engineer</li>
+      <li class="chip" data-i18n="meta_exp">💼 Data · BI · Cloud</li>
     </ul>
     <div class="hero-ctas">
       <a class="btn btn-primary" href="https://www.linkedin.com/in/roannylamaslopez" target="_blank" rel="noopener">LinkedIn</a>
@@ -850,7 +865,7 @@ html.js .reveal.visible { opacity: 1; transform: none; }
         <div class="job-company">Viajes El Corte Inglés</div>
         <div class="job-meta" data-i18n="job1_meta">Mar 2022 – Present · Montevideo, Uruguay · Remote</div>
         <p class="job-desc" data-i18n="job1_desc">Democratizing data access, ensuring data integrity and quality, building scalable data infrastructure, and leading the organization-wide integration of Looker.</p>
-        <div class="tags"><span class="tag">BigQuery</span><span class="tag">Looker</span><span class="tag">GCP</span><span class="tag">Data Warehousing</span><span class="tag">Data Quality</span></div>
+        <div class="chips tags"><span class="chip chip-accent">BigQuery</span><span class="chip chip-accent">Looker</span><span class="chip chip-accent">GCP</span><span class="chip chip-accent">Data Warehousing</span><span class="chip chip-accent">Data Quality</span></div>
       </div>
 
       <div class="job reveal">
@@ -858,7 +873,7 @@ html.js .reveal.visible { opacity: 1; transform: none; }
         <div class="job-company">Alphalabs</div>
         <div class="job-meta" data-i18n="job2_meta">May 2020 – Jan 2022 · Montevideo, Uruguay · Hybrid</div>
         <p class="job-desc" data-i18n="job2_desc">Technical Leader: drafted technical proposals for innovative solutions, defined project budgets, guided technical execution, led business analytics projects and identified potential clients.</p>
-        <div class="tags"><span class="tag">Technical Leadership</span><span class="tag">GCP</span><span class="tag">Business Analytics</span><span class="tag">Software Engineering</span></div>
+        <div class="chips tags"><span class="chip chip-accent">Technical Leadership</span><span class="chip chip-accent">GCP</span><span class="chip chip-accent">Business Analytics</span><span class="chip chip-accent">Software Engineering</span></div>
       </div>
 
       <div class="job reveal">
@@ -866,7 +881,7 @@ html.js .reveal.visible { opacity: 1; transform: none; }
         <div class="job-company">PedidosYa (Delivery Hero)</div>
         <div class="job-meta" data-i18n="job3_meta">May 2020 – May 2021 · Montevideo, Uruguay · Hybrid</div>
         <p class="job-desc" data-i18n="job3_desc">Led the team responsible for BI tools (Looker &amp; Tableau) and developed the data layer powering business KPIs, on a 100% Google Cloud stack: Composer, BigQuery, Dataproc, Cloud Build and Cloud Storage. Managed a team of five.</p>
-        <div class="tags"><span class="tag">Looker</span><span class="tag">Tableau</span><span class="tag">BigQuery</span><span class="tag">Composer</span><span class="tag">Team Lead</span></div>
+        <div class="chips tags"><span class="chip chip-accent">Looker</span><span class="chip chip-accent">Tableau</span><span class="chip chip-accent">BigQuery</span><span class="chip chip-accent">Composer</span><span class="chip chip-accent">Team Lead</span></div>
       </div>
 
       <div class="job reveal">
@@ -874,7 +889,7 @@ html.js .reveal.visible { opacity: 1; transform: none; }
         <div class="job-company">Bluekiri</div>
         <div class="job-meta" data-i18n="job4_meta">May 2019 – May 2020 · Palma, Spain · On-site</div>
         <p class="job-desc" data-i18n="job4_desc">Built the organization's Data Warehouse and Data Marts, defining standards and best practices. Worked with MicroStrategy, Apache Airflow, Pentaho Data Integration, PostgreSQL and Azure DevOps.</p>
-        <div class="tags"><span class="tag">MicroStrategy</span><span class="tag">Airflow</span><span class="tag">Pentaho</span><span class="tag">PostgreSQL</span><span class="tag">Azure DevOps</span></div>
+        <div class="chips tags"><span class="chip chip-accent">MicroStrategy</span><span class="chip chip-accent">Airflow</span><span class="chip chip-accent">Pentaho</span><span class="chip chip-accent">PostgreSQL</span><span class="chip chip-accent">Azure DevOps</span></div>
       </div>
 
     </div>
