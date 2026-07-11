@@ -8,9 +8,9 @@
 <meta name="author" content="Roanny Lamas López">
 <meta name="keywords" content="Roanny Lamas López, Data Engineer, Google Cloud, BigQuery, Looker, Apache Airflow, Business Intelligence, ETL, Montevideo, Uruguay">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#0b1020">
+<meta name="theme-color" content="#07131d">
 <link rel="canonical" href="https://roanny.github.io/">
-<link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;📊&lt;/text&gt;&lt;/svg&gt;">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2307131d'/%3E%3Ccircle cx='70' cy='32' r='13' fill='%23ff8f6b'/%3E%3Cpath d='M16 62c10-8 22-8 32 0s22 8 32 0' stroke='%232fd6c3' stroke-width='8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M24 82c8-6 18-6 26 0s18 6 26 0' stroke='%234cc9f0' stroke-width='7' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 
 <!-- Open Graph -->
 <meta property="og:title" content="Roanny Lamas López — Data Engineer">
@@ -61,163 +61,743 @@
   ]
 }
 </script>
+
+<!-- Tipografía (la misma familia que Coabana) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- Tema e indicador de JS antes del primer render, para evitar parpadeos -->
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var t = 'dark';
+  try {
+    t = new URLSearchParams(location.search).get('theme') ||
+        localStorage.getItem('theme') ||
+        (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  } catch(e) {}
+  if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+})();
+</script>
+
 <style>
-:root{
-  --bg:#0b1020;
-  --bg-soft:#111831;
-  --card:#151d3b;
-  --border:#27305a;
-  --text:#e8ecf8;
-  --muted:#9aa5c9;
-  --accent:#4f8cff;
-  --accent-2:#6ee7b7;
-  --shadow:0 10px 30px rgba(0,0,0,.35);
-  --nav-bg:rgba(11,16,32,.85);
+/* ══════════════════════════════════════════════════════════
+   Identidad compartida con Coabana: tema caribeño-tech.
+   El tema claro es la variante "caribe de día" (arena/papel).
+   ══════════════════════════════════════════════════════════ */
+:root {
+  --bg: #07131d;
+  --bg-2: #0a1926;
+  --panel: #0d2030;
+  --panel-2: #102638;
+  --line: rgba(158, 216, 219, 0.10);
+  --line-strong: rgba(158, 216, 219, 0.22);
+  --ink: #eaf4f4;
+  --muted: #93adbc;
+  --turquoise: #2fd6c3;
+  --cyan: #4cc9f0;
+  --coral: #ff8f6b;
+  --sand: #f4d58d;
+
+  --grad-sea: linear-gradient(92deg, var(--turquoise), var(--cyan));
+
+  --raise: rgba(255, 255, 255, 0.02);
+  --raise-strong: rgba(255, 255, 255, 0.03);
+  --chip-bg: rgba(255, 255, 255, 0.025);
+  --alt-band: rgba(16, 38, 56, 0.45);
+  --nav-bg: rgba(7, 19, 29, 0.78);
+  --nav-bg-scrolled: rgba(7, 19, 29, 0.92);
+  --dots-color: rgba(158, 216, 219, 0.09);
+  --glow-opacity: 0.16;
+  --shadow: 0 18px 50px rgba(2, 8, 14, 0.55);
+  --card-shadow: 0 16px 40px rgba(2, 8, 14, 0.45);
+
+  --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+
+  --radius: 16px;
+  --nav-h: 72px;
 }
-:root[data-theme="light"]{
-  --bg:#f7f9fc;
-  --bg-soft:#eef1f7;
-  --card:#ffffff;
-  --border:#e1e7f0;
-  --text:#16202e;
-  --muted:#54627a;
-  --accent:#2f6bff;
-  --accent-2:#0f9d77;
-  --shadow:0 10px 30px rgba(31,45,70,.10);
-  --nav-bg:rgba(247,249,252,.85);
+
+:root[data-theme="light"] {
+  --bg: #f7f4ec;
+  --bg-2: #f1ece1;
+  --panel: #fffdf8;
+  --panel-2: #fbf7ee;
+  --line: rgba(9, 55, 66, 0.12);
+  --line-strong: rgba(9, 55, 66, 0.24);
+  --ink: #0d2531;
+  --muted: #51707e;
+  --turquoise: #0b8b7d;
+  --cyan: #0f7ea6;
+  --coral: #c94b28;
+  --sand: #8a6a1d;
+
+  --raise: rgba(9, 55, 66, 0.03);
+  --raise-strong: rgba(9, 55, 66, 0.045);
+  --chip-bg: rgba(9, 55, 66, 0.04);
+  --alt-band: rgba(9, 55, 66, 0.05);
+  --nav-bg: rgba(247, 244, 236, 0.8);
+  --nav-bg-scrolled: rgba(247, 244, 236, 0.93);
+  --dots-color: rgba(9, 55, 66, 0.09);
+  --glow-opacity: 0.10;
+  --shadow: 0 18px 50px rgba(31, 45, 70, 0.14);
+  --card-shadow: 0 16px 40px rgba(31, 45, 70, 0.12);
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background .3s ease,color .3s ease}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:980px;margin:0 auto;padding:0 24px}
 
-/* Nav */
-nav{position:sticky;top:0;z-index:50;background:var(--nav-bg);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
-.logo{font-weight:800;font-size:1.05rem;color:var(--text)}
-.logo span{color:var(--accent)}
-.nav-links{display:flex;gap:20px;align-items:center}
-.nav-links a{color:var(--muted);font-size:.9rem;font-weight:500}
-.nav-links a:hover{color:var(--text);text-decoration:none}
-.lang-toggle{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden}
-.lang-toggle button{background:transparent;color:var(--muted);border:none;padding:6px 12px;font:inherit;font-size:.8rem;font-weight:600;cursor:pointer}
-.lang-toggle button.active{background:var(--accent);color:#fff}
-.theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:36px;height:34px;border:1px solid var(--border);border-radius:8px;background:transparent;color:var(--muted);cursor:pointer;font-size:1rem;line-height:1;transition:color .15s,border-color .15s}
-.theme-toggle:hover{color:var(--text);border-color:var(--accent)}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Hero */
-header{padding:90px 0 70px;background:
-  radial-gradient(800px 400px at 80% -10%,rgba(79,140,255,.18),transparent),
-  radial-gradient(600px 300px at 10% 110%,rgba(110,231,183,.10),transparent)}
-.kicker{font-family:'JetBrains Mono',monospace;color:var(--accent-2);font-size:.85rem;margin-bottom:14px}
-h1{font-size:clamp(2.2rem,6vw,3.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.1}
-.headline{font-size:clamp(1.05rem,2.5vw,1.35rem);color:var(--muted);margin-top:14px;max-width:640px}
-.headline strong{color:var(--text)}
-.meta-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:22px;color:var(--muted);font-size:.92rem}
-.meta-row span{display:flex;align-items:center;gap:7px}
-.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:10px;font-weight:600;font-size:.92rem;transition:transform .15s,box-shadow .15s}
-.btn:hover{text-decoration:none;transform:translateY(-2px)}
-.btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 20px rgba(79,140,255,.35)}
-.btn-ghost{border:1px solid var(--border);color:var(--text)}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 16px);
+}
 
-/* Sections */
-section{padding:64px 0}
-.section-title{font-size:1.5rem;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:12px}
-.section-title::before{content:"";width:28px;height:3px;background:var(--accent);border-radius:2px}
-.section-sub{color:var(--muted);margin-bottom:36px;font-size:.95rem}
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  font-size: 16.5px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background .3s ease, color .3s ease;
+}
 
-/* About */
-.about-text{color:var(--muted);font-size:1.05rem;max-width:760px}
-.about-text em{color:var(--accent-2);font-style:normal;font-weight:600}
+::selection { background: rgba(47, 214, 195, 0.35); }
 
-/* Experience timeline */
-.timeline{position:relative;margin-left:8px}
-.timeline::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:2px;background:var(--border)}
-.job{position:relative;padding:0 0 40px 32px}
-.job:last-child{padding-bottom:0}
-.job::before{content:"";position:absolute;left:-5px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(79,140,255,.2)}
-.job-title{font-size:1.12rem;font-weight:700}
-.job-company{color:var(--accent);font-weight:600}
-.job-meta{font-size:.85rem;color:var(--muted);margin:4px 0 10px;font-family:'JetBrains Mono',monospace}
-.job-desc{color:var(--muted);font-size:.95rem;max-width:720px}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.tag{font-size:.75rem;font-weight:600;color:var(--accent-2);background:rgba(110,231,183,.08);border:1px solid rgba(110,231,183,.25);padding:3px 10px;border-radius:999px}
+svg { max-width: 100%; }
 
-/* Cards grid */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
-.card:hover{transform:translateY(-3px);border-color:var(--accent)}
-.card h3{font-size:1rem;font-weight:700;margin-bottom:6px}
-.card .issuer{color:var(--accent);font-size:.85rem;font-weight:600}
-.card .date{color:var(--muted);font-size:.8rem;margin-top:6px;font-family:'JetBrains Mono',monospace}
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
 
-/* Skills */
-.skill-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-.skill-group{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px}
-.skill-group h3{font-size:.95rem;font-weight:700;margin-bottom:14px;color:var(--accent-2)}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-size:.82rem;font-weight:500;background:var(--bg-soft);border:1px solid var(--border);padding:5px 12px;border-radius:8px;color:var(--text)}
+h2 { font-size: clamp(1.7rem, 3.4vw, 2.5rem); }
+h3 { font-size: 1.12rem; }
 
-/* Education / languages */
-.edu-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;max-width:640px}
-.edu-card h3{font-size:1.05rem}
-.edu-card p{color:var(--muted);font-size:.92rem;margin-top:4px}
-.honor{margin-top:14px;padding-top:14px;border-top:1px solid var(--border);color:var(--muted);font-size:.9rem}
-.honor strong{color:var(--accent-2)}
-.lang-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:8px}
-.lang-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 22px}
-.lang-item strong{display:block}
-.lang-item span{color:var(--muted);font-size:.85rem}
+a { color: var(--turquoise); text-decoration: none; }
+a:hover { color: var(--cyan); }
 
-/* Contact */
-.contact-box{background:linear-gradient(135deg,rgba(79,140,255,.12),rgba(110,231,183,.07));border:1px solid var(--border);border-radius:18px;padding:44px 32px;text-align:center}
-.contact-box h2{font-size:1.6rem;font-weight:800;margin-bottom:10px}
-.contact-box p{color:var(--muted);max-width:520px;margin:0 auto 26px}
+:focus-visible {
+  outline: 2px solid var(--turquoise);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
 
-footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center}
+.container { width: min(1120px, 92%); margin: 0 auto; }
 
-@media (max-width:640px){
-  .nav-links a.nav-item{display:none}
-  header{padding:60px 0 50px}
+/* ── Fondo decorativo ─────────────────────────────────── */
+.bg-decor { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: var(--glow-opacity);
+}
+
+.glow-turquoise {
+  width: 620px; height: 620px;
+  background: #2fd6c3;
+  top: -220px; left: -160px;
+}
+
+.glow-coral {
+  width: 520px; height: 520px;
+  background: #ff8f6b;
+  bottom: -200px; right: -140px;
+  opacity: calc(var(--glow-opacity) * 0.65);
+}
+
+.dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--dots-color) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,.25) 55%, transparent);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,.25) 55%, transparent);
+}
+
+/* ── Navegación ───────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  background: var(--nav-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s ease, background .3s ease;
+}
+
+.nav.scrolled {
+  border-bottom-color: var(--line);
+  background: var(--nav-bg-scrolled);
+}
+
+.nav-inner {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); }
+.brand:hover { color: var(--ink); }
+.brand-glyph { width: 30px; height: 30px; flex: none; }
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.02em;
+  background: var(--grad-sea);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.nav-links { display: flex; gap: 26px; }
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 0.94rem;
+  font-weight: 500;
+  transition: color .2s ease;
+}
+
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+
+.lang-toggle, .theme-toggle {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--turquoise);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.theme-toggle { padding: 7px 11px; font-size: 0.9rem; line-height: 1; }
+
+.lang-toggle:hover, .theme-toggle:hover {
+  border-color: var(--turquoise);
+  background: rgba(47, 214, 195, 0.08);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px; height: 40px;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Botones ──────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.98rem;
+  padding: 13px 26px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+}
+
+/* El botón primario es una constante de marca: idéntico en ambos temas */
+.btn-primary {
+  background: linear-gradient(92deg, #2fd6c3, #4cc9f0);
+  color: #05242a;
+}
+
+.btn-primary:hover {
+  color: #05242a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(47, 214, 195, 0.32);
+}
+
+.btn-ghost {
+  color: var(--ink);
+  border-color: var(--line-strong);
+  background: var(--raise);
+}
+
+.btn-ghost:hover {
+  color: var(--ink);
+  border-color: var(--turquoise);
+  background: rgba(47, 214, 195, 0.07);
+}
+
+/* ── Hero ─────────────────────────────────────────────── */
+.hero {
+  padding: calc(var(--nav-h) + 84px) 0 56px;
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+}
+
+/* En pantallas muy altas el hero no necesita estirarse */
+@media (min-height: 1600px) {
+  .hero { min-height: unset; padding-bottom: 96px; }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--turquoise);
+  border: 1px solid var(--line-strong);
+  background: rgba(47, 214, 195, 0.06);
+  border-radius: 999px;
+  padding: 8px 16px;
+  margin-bottom: 26px;
+}
+
+.badge-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--turquoise);
+  box-shadow: 0 0 10px var(--turquoise);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5.6vw, 3.9rem);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.grad {
+  background: var(--grad-sea);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.hero-sub {
+  color: var(--muted);
+  font-size: 1.12rem;
+  max-width: 56ch;
+  margin-bottom: 30px;
+}
+
+.hero-sub strong { color: var(--ink); }
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin-bottom: 38px;
+}
+
+.hero-meta li {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  background: var(--chip-bg);
+  border-radius: 8px;
+  padding: 6px 12px;
+}
+
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* ── Secciones ────────────────────────────────────────── */
+.section { padding: 92px 0; }
+
+.section-alt {
+  background: linear-gradient(180deg, transparent, var(--alt-band) 18%, var(--alt-band) 82%, transparent);
+}
+
+.section-head { max-width: 680px; margin-bottom: 48px; }
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--coral);
+  margin-bottom: 12px;
+}
+
+.kicker::before { content: "~ "; color: var(--turquoise); }
+
+.section-sub { color: var(--muted); margin-top: 14px; font-size: 1.02rem; }
+
+.wave-divider { opacity: 0.6; }
+.wave-divider svg { display: block; width: 100%; height: 42px; }
+
+/* ── Sobre mí ─────────────────────────────────────────── */
+.about-text {
+  color: var(--muted);
+  font-size: 1.08rem;
+  max-width: 68ch;
+}
+
+.about-text::first-letter {
+  font-family: var(--font-display);
+  font-size: 1.6em;
+  color: var(--turquoise);
+}
+
+.about-text em { color: var(--turquoise); font-style: normal; font-weight: 600; }
+
+/* ── Experiencia ──────────────────────────────────────── */
+.timeline { position: relative; margin-left: 8px; }
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 6px; bottom: 6px;
+  width: 2px;
+  background: var(--line-strong);
+}
+
+.job { position: relative; padding: 0 0 44px 34px; }
+.job:last-child { padding-bottom: 0; }
+
+.job::before {
+  content: "";
+  position: absolute;
+  left: -5px; top: 6px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--turquoise);
+  box-shadow: 0 0 0 4px rgba(47, 214, 195, 0.18), 0 0 12px rgba(47, 214, 195, 0.5);
+}
+
+.job-title { font-family: var(--font-display); font-size: 1.14rem; font-weight: 600; }
+.job-company { color: var(--turquoise); font-weight: 600; }
+
+.job-meta {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 5px 0 10px;
+}
+
+.job-desc { color: var(--muted); font-size: 0.96rem; max-width: 72ch; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--turquoise);
+  background: rgba(47, 214, 195, 0.07);
+  border: 1px solid rgba(47, 214, 195, 0.22);
+  border-radius: 7px;
+  padding: 4px 9px;
+}
+
+/* ── Certificaciones ──────────────────────────────────── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 26px 24px;
+  background: linear-gradient(170deg, var(--raise-strong), var(--raise));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 24px; right: 24px;
+  height: 1px;
+  background: var(--grad-sea);
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--line-strong);
+  box-shadow: var(--card-shadow);
+}
+
+.card:hover::before { opacity: 1; }
+
+.card h3 { font-size: 1rem; }
+.card .issuer { color: var(--turquoise); font-size: 0.88rem; font-weight: 600; }
+.card .date { font-family: var(--font-mono); font-size: 0.74rem; color: var(--muted); margin-top: auto; }
+
+/* ── Habilidades ──────────────────────────────────────── */
+.skill-groups {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.skill-group {
+  padding: 24px;
+  background: var(--raise);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color .25s ease;
+}
+
+.skill-group:hover { border-color: var(--line-strong); }
+
+.skill-group h3 {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--coral);
+  margin-bottom: 16px;
+}
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.chip {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  background: var(--chip-bg);
+  border-radius: 8px;
+  padding: 5px 11px;
+}
+
+/* ── Educación e idiomas ──────────────────────────────── */
+.edu-card {
+  max-width: 680px;
+  padding: 28px 26px;
+  background: linear-gradient(170deg, var(--raise-strong), var(--raise));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.edu-card h3 { font-size: 1.06rem; }
+.edu-card p { color: var(--muted); font-family: var(--font-mono); font-size: 0.84rem; margin-top: 6px; }
+
+.honor {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.honor strong { color: var(--sand); }
+
+.lang-row { display: flex; flex-wrap: wrap; gap: 14px; }
+
+.lang-item {
+  padding: 16px 24px;
+  background: var(--raise);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.lang-item strong { display: block; font-family: var(--font-display); }
+.lang-item span { color: var(--muted); font-size: 0.86rem; }
+
+/* ── Contacto ─────────────────────────────────────────── */
+.contact-panel {
+  background: linear-gradient(170deg, var(--panel), var(--bg-2));
+  border: 1px solid var(--line-strong);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 52px 32px;
+  text-align: center;
+}
+
+.contact-panel .kicker { text-align: center; }
+.contact-panel h2 { margin-bottom: 12px; }
+
+.contact-panel p {
+  color: var(--muted);
+  max-width: 52ch;
+  margin: 0 auto 30px;
+}
+
+.contact-ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+
+/* ── Footer ───────────────────────────────────────────── */
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 40px 0 48px;
+  text-align: center;
+}
+
+.footer-tag {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.footer-copy { color: var(--muted); font-size: 0.86rem; }
+
+/* ── Animaciones de aparición (solo con JavaScript) ───── */
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+html.js .reveal.visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  html.js .reveal { opacity: 1; transform: none; transition: none; }
+  .badge-dot { animation: none; }
+  * { transition-duration: 0.01ms !important; }
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 1000px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 720px) {
+  .nav-links {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0; right: 0;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 5%;
+    background: var(--nav-bg-scrolled);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line-strong);
+    transform: translateY(-130%);
+    transition: transform .3s ease;
+  }
+
+  .nav-links.open { transform: translateY(0); }
+
+  .nav-links a { padding: 12px 8px; font-size: 1.05rem; border-radius: 10px; }
+  .nav-links a:hover { background: var(--raise-strong); }
+
+  .hamburger { display: flex; }
+
+  .hero { padding-top: calc(var(--nav-h) + 56px); min-height: unset; }
+  .section { padding: 72px 0; }
+  .cards-grid, .skill-groups { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="container nav-inner">
-    <div class="logo">roanny<span>.dev</span></div>
-    <div class="nav-links">
+<!-- Fondo decorativo -->
+<div class="bg-decor" aria-hidden="true">
+  <div class="glow glow-turquoise"></div>
+  <div class="glow glow-coral"></div>
+  <div class="dots"></div>
+</div>
+
+<!-- ══════════ NAV ══════════ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="roanny.dev — home">
+      <svg class="brand-glyph" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="33" cy="14" r="7" fill="var(--coral)"/>
+        <path d="M6 30c6-4 12-4 18 0s12 4 18 0" stroke="var(--turquoise)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M10 40c5-3 10-3 15 0s10 3 15 0" stroke="var(--cyan)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-name">roanny.dev</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Sections">
       <a class="nav-item" href="#experience" data-i18n="nav_exp">Experience</a>
       <a class="nav-item" href="#certifications" data-i18n="nav_cert">Certifications</a>
       <a class="nav-item" href="#skills" data-i18n="nav_skills">Skills</a>
       <a class="nav-item" href="#contact" data-i18n="nav_contact">Contact</a>
-      <div class="lang-toggle">
-        <button id="btn-en" onclick="setLang('en')">EN</button>
-        <button id="btn-es" onclick="setLang('es')">ES</button>
-      </div>
-      <button id="theme-btn" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light/dark theme">🌙</button>
+    </nav>
+
+    <div class="nav-actions">
+      <button id="lang-btn" class="lang-toggle" type="button" onclick="toggleLang()" aria-label="Cambiar a español">ES</button>
+      <button id="theme-btn" class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light/dark theme">🌙</button>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
-</nav>
+</header>
 
-<header>
+<main id="top">
+
+<!-- ══════════ HERO ══════════ -->
+<header class="hero">
   <div class="container">
-    <div class="kicker">// Data Engineer · Google Cloud Certified ×2</div>
-    <h1>Roanny Lamas López</h1>
-    <p class="headline" data-i18n="headline"><strong>Data Engineer</strong> at Viajes El Corte Inglés — building scalable data ecosystems on Google Cloud.</p>
-    <div class="meta-row">
-      <span>📍 Montevideo, Uruguay</span>
-      <span>🎓 Computer Science Engineer</span>
-      <span data-i18n="meta_exp">💼 Data · BI · Cloud</span>
-    </div>
-    <div class="cta-row">
+    <p class="badge">
+      <span class="badge-dot" aria-hidden="true"></span>
+      <span>Data Engineer · Google Cloud Certified ×2</span>
+    </p>
+    <h1 class="hero-title">Roanny <span class="grad">Lamas&nbsp;López</span></h1>
+    <p class="hero-sub" data-i18n="headline"><strong>Data Engineer</strong> at Viajes El Corte Inglés — building scalable data ecosystems on Google Cloud.</p>
+    <ul class="hero-meta">
+      <li>📍 Montevideo, Uruguay</li>
+      <li data-i18n="meta_degree">🎓 Computer Science Engineer</li>
+      <li data-i18n="meta_exp">💼 Data · BI · Cloud</li>
+    </ul>
+    <div class="hero-ctas">
       <a class="btn btn-primary" href="https://www.linkedin.com/in/roannylamaslopez" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn btn-ghost" href="https://github.com/roanny" target="_blank" rel="noopener">GitHub</a>
       <a class="btn btn-ghost" href="mailto:roannylamaslopez@gmail.com" data-i18n="cta_email">Email me</a>
@@ -225,20 +805,34 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font
   </div>
 </header>
 
-<section id="about">
+<!-- ══════════ SOBRE MÍ ══════════ -->
+<section class="section" id="about">
   <div class="container">
-    <h2 class="section-title" data-i18n="about_title">About</h2>
-    <p class="about-text" data-i18n="about_text">I'm a Data Engineer focused on <em>democratizing data access</em>, ensuring data integrity and quality, and building scalable data infrastructure. I currently lead the integration of Looker across Viajes El Corte Inglés, working with a modern Google Cloud stack. Previously I led BI teams at PedidosYa (Delivery Hero), co-founded a software company, and built data warehouses in Spain's travel-tech sector.</p>
+    <div class="section-head reveal">
+      <p class="kicker" data-i18n="about_kicker">About</p>
+      <h2 data-i18n="about_title">About me</h2>
+    </div>
+    <p class="about-text reveal" data-i18n="about_text">I'm a Data Engineer focused on <em>democratizing data access</em>, ensuring data integrity and quality, and building scalable data infrastructure. I currently lead the integration of Looker across Viajes El Corte Inglés, working with a modern Google Cloud stack. Previously I led BI teams at PedidosYa (Delivery Hero), co-founded a software company, and built data warehouses in Spain's travel-tech sector.</p>
   </div>
 </section>
 
-<section id="experience" style="background:var(--bg-soft)">
+<div class="wave-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" fill="none">
+    <path d="M0 30c60-20 120-20 180 0s120 20 180 0 120-20 180 0 120 20 180 0 120-20 180 0 120 20 180 0 120-20 180 0 120 20 180 0" stroke="var(--line-strong)" stroke-width="2"/>
+  </svg>
+</div>
+
+<!-- ══════════ EXPERIENCIA ══════════ -->
+<section class="section section-alt" id="experience">
   <div class="container">
-    <h2 class="section-title" data-i18n="exp_title">Experience</h2>
-    <p class="section-sub" data-i18n="exp_sub">A track record across data engineering, business intelligence and software development.</p>
+    <div class="section-head reveal">
+      <p class="kicker" data-i18n="exp_kicker">Track record</p>
+      <h2 data-i18n="exp_title">Experience</h2>
+      <p class="section-sub" data-i18n="exp_sub">A track record across data engineering, business intelligence and software development.</p>
+    </div>
     <div class="timeline">
 
-      <div class="job">
+      <div class="job reveal">
         <div class="job-title" data-i18n="job1_title">Data Engineer</div>
         <div class="job-company">Viajes El Corte Inglés</div>
         <div class="job-meta" data-i18n="job1_meta">Mar 2022 – Present · Montevideo, Uruguay · Remote</div>
@@ -246,7 +840,7 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font
         <div class="tags"><span class="tag">BigQuery</span><span class="tag">Looker</span><span class="tag">GCP</span><span class="tag">Data Warehousing</span><span class="tag">Data Quality</span></div>
       </div>
 
-      <div class="job">
+      <div class="job reveal">
         <div class="job-title" data-i18n="job2_title">Co-Founder &amp; Software Engineer</div>
         <div class="job-company">Alphalabs</div>
         <div class="job-meta" data-i18n="job2_meta">May 2020 – Jan 2022 · Montevideo, Uruguay · Hybrid</div>
@@ -254,7 +848,7 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font
         <div class="tags"><span class="tag">Technical Leadership</span><span class="tag">GCP</span><span class="tag">Business Analytics</span><span class="tag">Software Engineering</span></div>
       </div>
 
-      <div class="job">
+      <div class="job reveal">
         <div class="job-title" data-i18n="job3_title">BI Tools Manager</div>
         <div class="job-company">PedidosYa (Delivery Hero)</div>
         <div class="job-meta" data-i18n="job3_meta">May 2020 – May 2021 · Montevideo, Uruguay · Hybrid</div>
@@ -262,7 +856,7 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font
         <div class="tags"><span class="tag">Looker</span><span class="tag">Tableau</span><span class="tag">BigQuery</span><span class="tag">Composer</span><span class="tag">Team Lead</span></div>
       </div>
 
-      <div class="job">
+      <div class="job reveal">
         <div class="job-title" data-i18n="job4_title">Business Intelligence Developer</div>
         <div class="job-company">Bluekiri</div>
         <div class="job-meta" data-i18n="job4_meta">May 2019 – May 2020 · Palma, Spain · On-site</div>
@@ -274,37 +868,41 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font
   </div>
 </section>
 
-<section id="certifications">
+<!-- ══════════ CERTIFICACIONES ══════════ -->
+<section class="section" id="certifications">
   <div class="container">
-    <h2 class="section-title" data-i18n="cert_title">Licenses &amp; Certifications</h2>
-    <p class="section-sub" data-i18n="cert_sub">Continuous learning, with a focus on Google Cloud.</p>
-    <div class="grid">
-      <div class="card">
+    <div class="section-head reveal">
+      <p class="kicker" data-i18n="cert_kicker">Credentials</p>
+      <h2 data-i18n="cert_title">Licenses &amp; Certifications</h2>
+      <p class="section-sub" data-i18n="cert_sub">Continuous learning, with a focus on Google Cloud.</p>
+    </div>
+    <div class="cards-grid">
+      <div class="card reveal">
         <h3>Professional Data Engineer</h3>
         <div class="issuer">Google Cloud</div>
         <div class="date" data-i18n="cert1_date">Issued May 2024 · Valid until May 2028</div>
       </div>
-      <div class="card">
+      <div class="card reveal">
         <h3>Associate Cloud Engineer</h3>
         <div class="issuer">Google Cloud</div>
         <div class="date" data-i18n="cert2_date">Issued Feb 2026 · Valid until Feb 2029</div>
       </div>
-      <div class="card">
+      <div class="card reveal">
         <h3 data-i18n="cert3_name">Google Cloud Data Analytics Certificate</h3>
         <div class="issuer">Google Cloud</div>
         <div class="date" data-i18n="cert3_date">Issued May 2024</div>
       </div>
-      <div class="card">
+      <div class="card reveal">
         <h3 data-i18n="cert4_name">Apache Airflow Fundamentals Certification</h3>
         <div class="issuer">Astronomer</div>
         <div class="date" data-i18n="cert4_date">Issued May 2024</div>
       </div>
-      <div class="card">
+      <div class="card reveal">
         <h3>Business Intelligence Foundation Professional — BIFPC™</h3>
         <div class="issuer">Certiprof</div>
         <div class="date" data-i18n="cert5_date">Issued Dec 2022</div>
       </div>
-      <div class="card">
+      <div class="card reveal">
         <h3>Scrum Foundation Professional Certificate — SFPC™</h3>
         <div class="issuer">Certiprof</div>
         <div class="date" data-i18n="cert6_date">Issued Aug 2020</div>
@@ -313,24 +911,34 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font
   </div>
 </section>
 
-<section id="skills" style="background:var(--bg-soft)">
+<div class="wave-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" fill="none">
+    <path d="M0 30c60-20 120-20 180 0s120 20 180 0 120-20 180 0 120 20 180 0 120-20 180 0 120 20 180 0 120-20 180 0 120 20 180 0" stroke="var(--line-strong)" stroke-width="2"/>
+  </svg>
+</div>
+
+<!-- ══════════ HABILIDADES ══════════ -->
+<section class="section section-alt" id="skills">
   <div class="container">
-    <h2 class="section-title" data-i18n="skills_title">Skills</h2>
-    <p class="section-sub" data-i18n="skills_sub">Tools and domains I work with every day.</p>
+    <div class="section-head reveal">
+      <p class="kicker" data-i18n="skills_kicker">Toolbox</p>
+      <h2 data-i18n="skills_title">Skills</h2>
+      <p class="section-sub" data-i18n="skills_sub">Tools and domains I work with every day.</p>
+    </div>
     <div class="skill-groups">
-      <div class="skill-group">
+      <div class="skill-group reveal">
         <h3 data-i18n="sg1">Data Engineering</h3>
         <div class="chips"><span class="chip">BigQuery</span><span class="chip">Apache Airflow / Composer</span><span class="chip">Dataproc</span><span class="chip">ETL/ELT</span><span class="chip">Data Warehousing</span><span class="chip">Data Quality &amp; Integrity</span><span class="chip">SQL</span><span class="chip">Terraform</span></div>
       </div>
-      <div class="skill-group">
+      <div class="skill-group reveal">
         <h3 data-i18n="sg2">Business Intelligence</h3>
         <div class="chips"><span class="chip">Looker / LookML</span><span class="chip">Tableau</span><span class="chip">MicroStrategy</span><span class="chip">Pentaho</span><span class="chip">KPIs &amp; Analytics</span><span class="chip">Data Modeling</span></div>
       </div>
-      <div class="skill-group">
+      <div class="skill-group reveal">
         <h3 data-i18n="sg3">Cloud &amp; DevOps</h3>
         <div class="chips"><span class="chip">Google Cloud Platform</span><span class="chip">Cloud Build</span><span class="chip">Cloud Storage</span><span class="chip">Microsoft Azure</span><span class="chip">Azure DevOps</span><span class="chip">PostgreSQL</span></div>
       </div>
-      <div class="skill-group">
+      <div class="skill-group reveal">
         <h3 data-i18n="sg4">Leadership</h3>
         <div class="chips"><span class="chip" data-i18n="sk_team">Team Leadership</span><span class="chip" data-i18n="sk_pm">Project Management</span><span class="chip">Scrum / Agile</span><span class="chip" data-i18n="sk_se">Software Engineering</span></div>
       </div>
@@ -338,38 +946,53 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font
   </div>
 </section>
 
-<section id="education">
+<!-- ══════════ EDUCACIÓN ══════════ -->
+<section class="section" id="education">
   <div class="container">
-    <h2 class="section-title" data-i18n="edu_title">Education</h2>
-    <div class="edu-card">
+    <div class="section-head reveal">
+      <p class="kicker" data-i18n="edu_kicker">Foundations</p>
+      <h2 data-i18n="edu_title">Education</h2>
+    </div>
+    <div class="edu-card reveal">
       <h3 data-i18n="edu_school">Universidad de las Ciencias Informáticas (UCI)</h3>
       <p data-i18n="edu_degree">Computer Science Engineer · 2009 – 2014 · GPA 4.94/5</p>
       <div class="honor" data-i18n="edu_honor">🏅 Graduated with <strong>First Class Honors (Summa cum laude)</strong> — Gold Title of the 8th Graduation.</div>
     </div>
-    <h2 class="section-title" style="margin-top:48px" data-i18n="lang_title">Languages</h2>
+
+    <div class="section-head reveal" style="margin-top:64px">
+      <p class="kicker" data-i18n="lang_kicker">Communication</p>
+      <h2 data-i18n="lang_title">Languages</h2>
+    </div>
     <div class="lang-row">
-      <div class="lang-item"><strong data-i18n="lang_es">Spanish</strong><span data-i18n="lang_es_lvl">Native</span></div>
-      <div class="lang-item"><strong data-i18n="lang_en">English</strong><span data-i18n="lang_en_lvl">Professional working proficiency</span></div>
+      <div class="lang-item reveal"><strong data-i18n="lang_es">Spanish</strong><span data-i18n="lang_es_lvl">Native</span></div>
+      <div class="lang-item reveal"><strong data-i18n="lang_en">English</strong><span data-i18n="lang_en_lvl">Professional working proficiency</span></div>
     </div>
   </div>
 </section>
 
-<section id="contact">
+<!-- ══════════ CONTACTO ══════════ -->
+<section class="section" id="contact">
   <div class="container">
-    <div class="contact-box">
+    <div class="contact-panel reveal">
+      <p class="kicker" data-i18n="contact_kicker">Contact</p>
       <h2 data-i18n="contact_title">Let's build something with data</h2>
       <p data-i18n="contact_text">Interested in scalable data platforms, BI architecture or Google Cloud? I'm always open to connecting.</p>
-      <div class="cta-row" style="justify-content:center">
+      <div class="contact-ctas">
         <a class="btn btn-primary" href="mailto:roannylamaslopez@gmail.com">roannylamaslopez@gmail.com</a>
         <a class="btn btn-ghost" href="https://www.linkedin.com/in/roannylamaslopez" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://coabana.github.io/coabana/" target="_blank" rel="noopener"><span aria-hidden="true">🌴</span> <span data-i18n="cta_coabana">Coabana — my data studio</span></a>
       </div>
     </div>
   </div>
 </section>
 
-<footer>
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
   <div class="container">
-    <span data-i18n="footer">© <span id="year"></span> Roanny Lamas López · Built with care, hosted on GitHub Pages.</span>
+    <p class="footer-tag" data-i18n="footer_tag">Data Engineering · Google Cloud</p>
+    <p class="footer-copy" data-i18n="footer">© <span id="year"></span> Roanny Lamas López · Built with care, hosted on GitHub Pages.</p>
   </div>
 </footer>
 
@@ -378,10 +1001,13 @@ const i18n = {
   en: {
     nav_exp:"Experience", nav_cert:"Certifications", nav_skills:"Skills", nav_contact:"Contact",
     headline:'<strong>Data Engineer</strong> at Viajes El Corte Inglés — building scalable data ecosystems on Google Cloud.',
+    meta_degree:"🎓 Computer Science Engineer",
     meta_exp:"💼 Data · BI · Cloud",
     cta_email:"Email me",
-    about_title:"About",
+    about_kicker:"About",
+    about_title:"About me",
     about_text:'I\'m a Data Engineer focused on <em>democratizing data access</em>, ensuring data integrity and quality, and building scalable data infrastructure. I currently lead the integration of Looker across Viajes El Corte Inglés, working with a modern Google Cloud stack. Previously I led BI teams at PedidosYa (Delivery Hero), co-founded a software company, and built data warehouses in Spain\'s travel-tech sector.',
+    exp_kicker:"Track record",
     exp_title:"Experience",
     exp_sub:"A track record across data engineering, business intelligence and software development.",
     job1_title:"Data Engineer",
@@ -396,6 +1022,7 @@ const i18n = {
     job4_title:"Business Intelligence Developer",
     job4_meta:"May 2019 – May 2020 · Palma, Spain · On-site",
     job4_desc:"Built the organization's Data Warehouse and Data Marts, defining standards and best practices. Worked with MicroStrategy, Apache Airflow, Pentaho Data Integration, PostgreSQL and Azure DevOps.",
+    cert_kicker:"Credentials",
     cert_title:"Licenses & Certifications",
     cert_sub:"Continuous learning, with a focus on Google Cloud.",
     cert1_date:"Issued May 2024 · Valid until May 2028",
@@ -406,28 +1033,37 @@ const i18n = {
     cert4_date:"Issued May 2024",
     cert5_date:"Issued Dec 2022",
     cert6_date:"Issued Aug 2020",
+    skills_kicker:"Toolbox",
     skills_title:"Skills",
     skills_sub:"Tools and domains I work with every day.",
     sg1:"Data Engineering", sg2:"Business Intelligence", sg3:"Cloud & DevOps", sg4:"Leadership",
     sk_team:"Team Leadership", sk_pm:"Project Management", sk_se:"Software Engineering",
+    edu_kicker:"Foundations",
     edu_title:"Education",
     edu_school:"Universidad de las Ciencias Informáticas (UCI)",
     edu_degree:"Computer Science Engineer · 2009 – 2014 · GPA 4.94/5",
     edu_honor:'🏅 Graduated with <strong>First Class Honors (Summa cum laude)</strong> — Gold Title of the 8th Graduation.',
+    lang_kicker:"Communication",
     lang_title:"Languages",
     lang_es:"Spanish", lang_es_lvl:"Native",
     lang_en:"English", lang_en_lvl:"Professional working proficiency",
+    contact_kicker:"Contact",
     contact_title:"Let's build something with data",
     contact_text:"Interested in scalable data platforms, BI architecture or Google Cloud? I'm always open to connecting.",
+    cta_coabana:"Coabana — my data studio",
+    footer_tag:"Data Engineering · Google Cloud",
     footer:'© <span id="year"></span> Roanny Lamas López · Built with care, hosted on GitHub Pages.'
   },
   es: {
     nav_exp:"Experiencia", nav_cert:"Certificaciones", nav_skills:"Habilidades", nav_contact:"Contacto",
     headline:'<strong>Data Engineer</strong> en Viajes El Corte Inglés — construyendo ecosistemas de datos escalables en Google Cloud.',
+    meta_degree:"🎓 Ingeniero en Ciencias Informáticas",
     meta_exp:"💼 Datos · BI · Cloud",
     cta_email:"Escríbeme",
+    about_kicker:"Perfil",
     about_title:"Sobre mí",
     about_text:'Soy Data Engineer enfocado en <em>democratizar el acceso a los datos</em>, garantizar su integridad y calidad, y construir infraestructura de datos escalable. Actualmente lidero la integración de Looker en Viajes El Corte Inglés, trabajando con un stack moderno de Google Cloud. Antes lideré equipos de BI en PedidosYa (Delivery Hero), cofundé una empresa de software y construí data warehouses en el sector travel-tech de España.',
+    exp_kicker:"Trayectoria",
     exp_title:"Experiencia",
     exp_sub:"Una trayectoria entre ingeniería de datos, business intelligence y desarrollo de software.",
     job1_title:"Data Engineer",
@@ -442,6 +1078,7 @@ const i18n = {
     job4_title:"Desarrollador de Business Intelligence",
     job4_meta:"May 2019 – May 2020 · Palma, España · Presencial",
     job4_desc:"Construcción del Data Warehouse y los Data Marts de la organización, definiendo estándares y buenas prácticas. Trabajé con MicroStrategy, Apache Airflow, Pentaho Data Integration, PostgreSQL y Azure DevOps.",
+    cert_kicker:"Credenciales",
     cert_title:"Licencias y certificaciones",
     cert_sub:"Aprendizaje continuo, con foco en Google Cloud.",
     cert1_date:"Emitida May 2024 · Válida hasta May 2028",
@@ -452,58 +1089,124 @@ const i18n = {
     cert4_date:"Emitida May 2024",
     cert5_date:"Emitida Dic 2022",
     cert6_date:"Emitida Ago 2020",
+    skills_kicker:"Herramientas",
     skills_title:"Habilidades",
     skills_sub:"Herramientas y dominios con los que trabajo a diario.",
     sg1:"Ingeniería de Datos", sg2:"Business Intelligence", sg3:"Cloud y DevOps", sg4:"Liderazgo",
     sk_team:"Liderazgo de equipos", sk_pm:"Gestión de proyectos", sk_se:"Ingeniería de software",
+    edu_kicker:"Formación",
     edu_title:"Educación",
     edu_school:"Universidad de las Ciencias Informáticas (UCI)",
     edu_degree:"Ingeniero en Ciencias Informáticas · 2009 – 2014 · Promedio 4.94/5",
     edu_honor:'🏅 Graduado con <strong>Título de Oro (Summa cum laude)</strong> — Título de Oro de la 8.ª graduación.',
+    lang_kicker:"Comunicación",
     lang_title:"Idiomas",
     lang_es:"Español", lang_es_lvl:"Nativo",
     lang_en:"Inglés", lang_en_lvl:"Competencia profesional",
+    contact_kicker:"Contacto",
     contact_title:"Construyamos algo con datos",
     contact_text:"¿Te interesan las plataformas de datos escalables, la arquitectura de BI o Google Cloud? Siempre estoy abierto a conectar.",
+    cta_coabana:"Coabana — mi estudio de datos",
+    footer_tag:"Ingeniería de Datos · Google Cloud",
     footer:'© <span id="year"></span> Roanny Lamas López · Hecho con cariño, alojado en GitHub Pages.'
   }
 };
 
+/* ── Tema claro/oscuro ────────────────────────────────── */
 function applyTheme(theme){
   if(theme==='light'){ document.documentElement.setAttribute('data-theme','light'); }
   else { document.documentElement.removeAttribute('data-theme'); }
   const b = document.getElementById('theme-btn'); if(b) b.textContent = theme==='light' ? '☀️' : '🌙';
-  const m = document.querySelector('meta[name="theme-color"]'); if(m) m.setAttribute('content', theme==='light' ? '#f7f9fc' : '#0b1020');
+  const m = document.querySelector('meta[name="theme-color"]'); if(m) m.setAttribute('content', theme==='light' ? '#f7f4ec' : '#07131d');
 }
 function toggleTheme(){
   const next = document.documentElement.getAttribute('data-theme')==='light' ? 'dark' : 'light';
   applyTheme(next);
   try{ localStorage.setItem('theme', next); }catch(e){}
 }
-let savedTheme = 'dark';
-try{
-  savedTheme = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-}catch(e){}
-applyTheme(savedTheme==='light' ? 'light' : 'dark');
+applyTheme(document.documentElement.getAttribute('data-theme')==='light' ? 'light' : 'dark');
+
+/* ── Idioma (mismo patrón de botón único que Coabana) ─── */
+let currentLang = 'en';
 
 function setLang(lang){
+  currentLang = lang;
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const key = el.getAttribute('data-i18n');
     if(i18n[lang][key] !== undefined) el.innerHTML = i18n[lang][key];
   });
-  document.getElementById('btn-en').classList.toggle('active', lang==='en');
-  document.getElementById('btn-es').classList.toggle('active', lang==='es');
+  const b = document.getElementById('lang-btn');
+  if(b){
+    b.textContent = lang==='es' ? 'EN' : 'ES';
+    b.setAttribute('aria-label', lang==='es' ? 'Switch to English' : 'Cambiar a español');
+  }
   try{ localStorage.setItem('lang', lang); }catch(e){}
   const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
 }
 
+function toggleLang(){ setLang(currentLang==='es' ? 'en' : 'es'); }
+
 let saved = 'en';
 try{
-  saved = localStorage.getItem('lang') || ((navigator.language||'en').toLowerCase().startsWith('es') ? 'es' : 'en');
+  saved = new URLSearchParams(location.search).get('lang') ||
+          localStorage.getItem('lang') ||
+          ((navigator.language||'en').toLowerCase().startsWith('es') ? 'es' : 'en');
 }catch(e){}
 if(saved!=='es' && saved!=='en') saved='en';
 setLang(saved);
+
+/* ── Navegación: borde al hacer scroll ────────────────── */
+const nav = document.getElementById('nav');
+function onScrollNav(){ nav.classList.toggle('scrolled', window.scrollY > 12); }
+window.addEventListener('scroll', onScrollNav, { passive: true });
+onScrollNav();
+
+/* ── Menú móvil ───────────────────────────────────────── */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+hamburger.addEventListener('click', ()=>{
+  const open = navLinks.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', String(open));
+});
+
+navLinks.querySelectorAll('a').forEach(a=>
+  a.addEventListener('click', ()=>{
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  })
+);
+
+/* ── Enlace activo según la sección visible ───────────── */
+const sectionIds = ['experience','certifications','skills','contact'];
+const menuAnchors = Array.from(navLinks.querySelectorAll('a'));
+
+const sectionObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting) return;
+    menuAnchors.forEach(a=>
+      a.classList.toggle('active', a.getAttribute('href') === `#${entry.target.id}`)
+    );
+  });
+}, { rootMargin: '-45% 0px -50% 0px' });
+
+sectionIds.forEach(id=>{
+  const el = document.getElementById(id);
+  if(el) sectionObserver.observe(el);
+});
+
+/* ── Animaciones de aparición ─────────────────────────── */
+const revealObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
 </script>
 </body>
 </html>
