@@ -80,7 +80,11 @@
 <!-- Tipografía (la misma familia que Coabana) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<!-- Fuentes en carga asíncrona: no bloquean el primer pintado; el texto
+     sale con la fuente del sistema y cambia al llegar la de marca -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"></noscript>
 
 <!-- Tema e indicador de JS antes del primer render, para evitar parpadeos -->
 <script>
@@ -161,7 +165,7 @@
   --line: rgba(9, 55, 66, 0.12);
   --line-strong: rgba(9, 55, 66, 0.24);
   --ink: #0d2531;
-  --muted: #51707e;
+  --muted: #48616e;
   --turquoise: #0b8b7d;
   --cyan: #0f7ea6;
   --coral: #c94b28;
