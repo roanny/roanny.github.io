@@ -1171,6 +1171,20 @@ function toggleTheme(){
 }
 applyTheme(document.documentElement.getAttribute('data-theme')==='light' ? 'light' : 'dark');
 
+// Mientras no haya elección manual ni ?theme= en la URL,
+// el tema sigue al sistema en vivo
+if(window.matchMedia){
+  const systemTheme = window.matchMedia('(prefers-color-scheme: light)');
+  if(systemTheme.addEventListener){
+    systemTheme.addEventListener('change', (e)=>{
+      let manual = null;
+      try{ manual = localStorage.getItem('theme'); }catch(err){}
+      const urlTheme = new URLSearchParams(location.search).get('theme');
+      if(!manual && !urlTheme) applyTheme(e.matches ? 'light' : 'dark');
+    });
+  }
+}
+
 /* ── Idioma (mismo patrón de botón único que Coabana) ─── */
 let currentLang = 'en';
 
@@ -1192,11 +1206,15 @@ function setLang(lang){
     const lbl2 = i18n[lang][th==='light' ? 'theme_to_dark' : 'theme_to_light'];
     tb.setAttribute('aria-label', lbl2); tb.title = lbl2;
   }
-  try{ localStorage.setItem('lang', lang); }catch(e){}
   const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
 }
 
-function toggleLang(){ setLang(currentLang==='es' ? 'en' : 'es'); }
+function toggleLang(){
+  const next = currentLang==='es' ? 'en' : 'es';
+  setLang(next);
+  // Solo la elección manual se guarda; la detección automática no
+  try{ localStorage.setItem('lang', next); }catch(e){}
+}
 
 let saved = 'en';
 try{
