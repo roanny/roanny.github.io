@@ -412,6 +412,8 @@ a:hover { color: var(--cyan); }
   box-shadow: none;
 }
 
+.btn-small { padding: 9px 18px; font-size: 0.88rem; }
+
 /* ── Hero ─────────────────────────────────────────────── */
 .hero {
   padding: calc(var(--nav-h) + 84px) 0 56px;
@@ -769,6 +771,7 @@ html.js .reveal.visible { opacity: 1; transform: none; }
   .nav-links a:hover { background: var(--raise-strong); }
 
   .hamburger { display: flex; }
+  .nav .btn { display: none; }
 
   .hero { padding-top: calc(var(--nav-h) + 56px); min-height: unset; }
   .section { padding: 72px 0; }
@@ -806,7 +809,8 @@ html.js .reveal.visible { opacity: 1; transform: none; }
 
     <div class="nav-actions">
       <button id="lang-btn" class="lang-toggle" type="button" onclick="toggleLang()" aria-label="Cambiar a español">ES</button>
-      <button id="theme-btn" class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light/dark theme">🌙</button>
+      <button id="theme-btn" class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to light theme" title="Switch to light theme">☀️</button>
+      <a class="btn btn-primary btn-small" href="#contact" data-i18n="nav_cta">Let's talk</a>
       <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -1033,6 +1037,7 @@ html.js .reveal.visible { opacity: 1; transform: none; }
 const i18n = {
   en: {
     nav_exp:"Experience", nav_cert:"Certifications", nav_skills:"Skills", nav_contact:"Contact",
+    nav_cta:"Let's talk", theme_to_light:"Switch to light theme", theme_to_dark:"Switch to dark theme",
     headline:'<strong>Data Engineer</strong> at Viajes El Corte Inglés — building scalable data ecosystems on Google Cloud.',
     meta_degree:"🎓 Computer Science Engineer",
     meta_exp:"💼 Data · BI · Cloud",
@@ -1089,6 +1094,7 @@ const i18n = {
   },
   es: {
     nav_exp:"Experiencia", nav_cert:"Certificaciones", nav_skills:"Habilidades", nav_contact:"Contacto",
+    nav_cta:"Hablemos", theme_to_light:"Cambiar a tema claro", theme_to_dark:"Cambiar a tema oscuro",
     headline:'<strong>Data Engineer</strong> en Viajes El Corte Inglés — construyendo ecosistemas de datos escalables en Google Cloud.',
     meta_degree:"🎓 Ingeniero en Ciencias Informáticas",
     meta_exp:"💼 Datos · BI · Cloud",
@@ -1149,7 +1155,13 @@ const i18n = {
 function applyTheme(theme){
   if(theme==='light'){ document.documentElement.setAttribute('data-theme','light'); }
   else { document.documentElement.removeAttribute('data-theme'); }
-  const b = document.getElementById('theme-btn'); if(b) b.textContent = theme==='light' ? '☀️' : '🌙';
+  const b = document.getElementById('theme-btn');
+  if(b){
+    b.textContent = theme==='light' ? '🌙' : '☀️';
+    const lng = document.documentElement.lang === 'es' ? 'es' : 'en';
+    const lbl = i18n[lng][theme==='light' ? 'theme_to_dark' : 'theme_to_light'];
+    b.setAttribute('aria-label', lbl); b.title = lbl;
+  }
   const m = document.querySelector('meta[name="theme-color"]'); if(m) m.setAttribute('content', theme==='light' ? '#f7f4ec' : '#07131d');
 }
 function toggleTheme(){
@@ -1173,6 +1185,12 @@ function setLang(lang){
   if(b){
     b.textContent = lang==='es' ? 'EN' : 'ES';
     b.setAttribute('aria-label', lang==='es' ? 'Switch to English' : 'Cambiar a español');
+  }
+  const tb = document.getElementById('theme-btn');
+  if(tb){
+    const th = document.documentElement.getAttribute('data-theme')==='light' ? 'light' : 'dark';
+    const lbl2 = i18n[lang][th==='light' ? 'theme_to_dark' : 'theme_to_light'];
+    tb.setAttribute('aria-label', lbl2); tb.title = lbl2;
   }
   try{ localStorage.setItem('lang', lang); }catch(e){}
   const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
