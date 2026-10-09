@@ -133,7 +133,9 @@ jobs:
           while read -r sha email; do
             [ -n "$sha" ] || continue
             case "$email" in
-              roannylamaslopez@gmail.com|49699333+dependabot[bot]@users.noreply.github.com|noreply@github.com) ;;
+              # Quoted: each address is a literal, not a glob (an unquoted
+              # `[bot]` would match one character of b, o or t).
+              'roannylamaslopez@gmail.com'|'49699333+dependabot[bot]@users.noreply.github.com'|'noreply@github.com') ;;
               *) echo "::error::commit $sha is authored as $email, not roannylamaslopez@gmail.com"; fail=1 ;;
             esac
           done <<< "$log"
