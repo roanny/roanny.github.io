@@ -1,0 +1,31 @@
+# Weekly version updates for the one ecosystem this repository pins: the
+# GitHub Actions of `.github/workflows/`. The site has no package manifest;
+# html-validate is pinned in `ci.yml` and moved by hand.
+# Docs: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates
+
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Montevideo"
+    open-pull-requests-limit: 5
+    assignees:
+      - "roanny"
+    groups:
+      actions:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      actions-security:
+        applies-to: security-updates
+        patterns:
+          - "*"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "chore(ci)"

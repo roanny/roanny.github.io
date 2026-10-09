@@ -1,0 +1,103 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# A newer push to a pull request supersedes its run; a push run on `main`
+# always finishes.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          # Full history: the Commit subjects step reads the pull request's
+          # commits.
+          fetch-depth: 0
+
+      - name: HTML valid
+        # Both pages against html-validate's `standard` preset (the HTML
+        # standard's content models, attributes and nesting; no style rules),
+        # pinned here and in `.claude/settings.json`'s allow line.
+        if: '!cancelled()'
+        run: npx --yes html-validate@11.16.0 --config .github/htmlvalidate.json index.html 404.html
+
+      - name: i18n keys in both languages
+        if: '!cancelled()'
+        run: python3 .github/scripts/check_site.py i18n
+
+      - name: Sitemap well-formed
+        if: '!cancelled()'
+        run: python3 .github/scripts/check_site.py sitemap
+
+      - name: Shared blocks unchanged
+        # Each line of the manifest is `<sha256>  <name>  <path>`: the block
+        # between `<!-- <name>:shared begin -->` and `<!-- <name>:shared end -->`
+        # in <path>, marker lines included, must hash to <sha256>. A marker is
+        # a line that equals the marker text, present exactly once.
+        if: '!cancelled()'
+        shell: bash
+        run: |
+          fail=0
+          manifest=.claude/.shared-blocks.sha256
+          if [ ! -s "$manifest" ]; then
+            echo "::error::$manifest is missing or empty"; exit 1
+          fi
+          while read -r want name path; do
+            [ -n "$want" ] || continue
+            begin="<!-- ${name}:shared begin -->"
+            end="<!-- ${name}:shared end -->"
+            if [ ! -f "$path" ]; then
+              echo "::error::$manifest names $path, which does not exist"; fail=1; continue
+            fi
+            if [ "$(grep -c -x -F "$begin" "$path")" != 1 ] || [ "$(grep -c -x -F "$end" "$path")" != 1 ]; then
+              echo "::error file=$path::the $name markers must each appear exactly once"; fail=1; continue
+            fi
+            block="$RUNNER_TEMP/$name.block"
+            awk -v b="$begin" -v e="$end" '$0==b{p=1} p{print} $0==e{p=0}' "$path" > "$block"
+            if [ ! -s "$block" ]; then
+              echo "::error file=$path::the $name block is empty"; fail=1; continue
+            fi
+            got=$(sha256sum "$block" | cut -d' ' -f1)
+            if [ "$got" != "$want" ]; then
+              echo "::error file=$path::the $name block changed (sha256 $got, manifest $want)"; fail=1
+            else
+              echo "$name: ok"
+            fi
+          done < "$manifest"
+          exit "$fail"
+
+      - name: Commit subjects
+        # The whole first line of every commit the pull request adds: at most
+        # 72 characters, no trailing period. A pull request opened by
+        # Dependabot is exempt; its subjects are the bot's.
+        if: "!cancelled() && github.event_name == 'pull_request' && github.event.pull_request.user.login != 'dependabot[bot]'"
+        shell: bash
+        env:
+          LC_ALL: C.UTF-8
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          fail=0
+          while IFS= read -r subject; do
+            if [ "${#subject}" -gt 72 ]; then
+              echo "::error::${#subject} characters (max 72): $subject"; fail=1
+            fi
+            case "$subject" in
+              *.) echo "::error::trailing period: $subject"; fail=1 ;;
+            esac
+          done < <(git log --no-merges --format=%s "$BASE_SHA..$HEAD_SHA")
+          exit "$fail"

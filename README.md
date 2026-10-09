@@ -1,44 +1,79 @@
-# 📊 roanny.github.io — CV / portfolio
+# roanny.github.io
 
-Portfolio profesional de **Roanny Lamas López** (Data Engineer · Google Cloud), publicado con GitHub Pages en **https://roanny.github.io/**.
+The professional CV and portfolio of **Roanny Lamas López** (Data Engineer · Google Cloud), published with GitHub Pages at **https://roanny.github.io/**. One hand-written HTML file in plain HTML, CSS and JavaScript, with no framework and no build step. The site is in English by default, with Spanish.
 
-Construido con HTML, CSS y JavaScript puros en un único archivo — sin frameworks ni paso de build.
+[![Validate](https://github.com/roanny/roanny.github.io/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/roanny/roanny.github.io/actions/workflows/ci.yml)
 
-## Estructura
+## What it does
 
-```
-├── index.html       # Todo el sitio: contenido, estilos, i18n y lógica
-├── favicon.svg      # Favicon (sol sobre olas) + favicon-32.png de respaldo
-├── og-image.png     # Social card 1200×630 (previews en LinkedIn/WhatsApp/X)
-├── robots.txt       # Permite indexación y enlaza el sitemap
-├── sitemap.xml      # Mapa del sitio (actualiza lastmod al hacer cambios)
-└── .nojekyll        # GitHub Pages sirve el sitio tal cual, sin Jekyll
-```
+- Presents the profile, experience, certifications, skills and contact in a single page.
+- Speaks English and Spanish from one set of keys, and follows the visitor's system theme (dark by default, a light "Caribbean day" variant).
+- Carries the SEO a personal site needs: canonical URL, `hreflang`, Open Graph and Twitter cards, `Person` structured data, `robots.txt` and `sitemap.xml`.
 
-## Cómo editar los textos
-
-Todo vive en `index.html`. Los textos bilingües están en el objeto **`i18n`** del `<script>` final, en dos diccionarios (`en` y `es`) con las mismas claves; cada elemento traducible lleva `data-i18n="clave"`. Edita el valor en ambos idiomas y, si el cambio es grande, actualiza también el texto por defecto (inglés) en el HTML para mantenerlos alineados.
-
-## Idioma y tema
-
-- **Idioma**: se detecta del navegador (EN por defecto), se fuerza con `?lang=en|es` y se cambia con el botón **EN/ES**; la elección se recuerda.
-- **Tema**: arranca según la apariencia del sistema (oscuro por defecto), se fuerza con `?theme=light|dark` y se cambia con el botón **🌙/☀️**; la elección se recuerda. El tema claro es la variante "caribe de día".
-
-## Sistema de diseño
-
-El sitio comparte identidad con [Coabana](https://coabana.github.io/): misma paleta caribeño-tech, tipografías, chips, botones y motion. La referencia canónica de tokens y componentes es el **[DESIGN.md del repo de Coabana](https://github.com/Coabana/coabana.github.io/blob/main/DESIGN.md)** — si cambias un token allí, replícalo en el `<style>` de `index.html`.
-
-## SEO
-
-`index.html` incluye canonical, hreflang (`en`/`es`/`x-default` vía `?lang=`), Open Graph y Twitter cards con `og-image.png`, y JSON-LD de tipo `Person` (con la afiliación a Coabana). Tras cambios de contenido, actualiza `lastmod` en `sitemap.xml`.
-
-## Probar en local
+## Quick start
 
 ```bash
 python3 -m http.server 8000
-# abre http://localhost:8000
+# open http://localhost:8000
 ```
 
-## Publicación
+## The tree
 
-GitHub Pages sirve la rama `main` (raíz) automáticamente — al hacer merge, el sitio se despliega solo en 1–2 minutos.
+```
+├── index.html        # The whole site: content, styles, i18n and script
+├── 404.html          # Themed not-found page, self-contained
+├── favicon.svg       # Favicon (sun over waves), with favicon-32.png as fallback
+├── og-image.jpg      # 1200×630 social card (LinkedIn, WhatsApp, X previews)
+├── robots.txt        # Allows indexing and points at the sitemap
+├── sitemap.xml       # Site map (update lastmod on content changes)
+├── googlede4b53d1c977dbfc.html  # Google Search Console verification
+├── .nojekyll         # Pages serves the tree as it is, without Jekyll
+└── .github/          # Validate (ci.yml), its scripts, Dependabot
+```
+
+## Editing the text
+
+Everything lives in `index.html`. The bilingual text is in the **`i18n`** object of the final `<script>`, in two dictionaries (`en` and `es`) with the same keys; every translatable element carries `data-i18n="key"`. Edit the value in both languages and, for a large change, update the default (English) text in the HTML as well so the two stay aligned. CI refuses a key present in one dictionary and missing from the other, and a `data-i18n` key that either one lacks.
+
+## Language and theme
+
+- **Language**: detected from the browser (English otherwise), forced with `?lang=en|es`, switched with the **EN/ES** button. Only a manual choice is remembered; automatic detection is not stored.
+- **Theme**: starts from the system appearance (dark otherwise), forced with `?theme=light|dark`, switched with the **🌙/☀️** button, which remembers the choice. Until the visitor picks one and while no `?theme=` is in the URL, the theme follows the system live.
+
+## Design system
+
+The site shares its identity with [Coabana](https://coabana.github.io/): the same Caribbean-tech palette, typefaces, chips, buttons and motion. The canonical reference for tokens and components is **[`DESIGN.md` in the Coabana site's repository](https://github.com/Coabana/coabana.github.io/blob/main/DESIGN.md)**. A token changed there is copied by hand into the `<style>` of `index.html`.
+
+## SEO
+
+`index.html` carries the canonical URL, `hreflang` (`en`, `es` and `x-default` through `?lang=`), Open Graph and Twitter cards with `og-image.jpg`, and `Person` JSON-LD (with the Coabana affiliation). After a content change, update `lastmod` in `sitemap.xml`.
+
+## Development
+
+The gates CI runs, by hand:
+
+```bash
+npx --yes html-validate@11.16.0 --config .github/htmlvalidate.json index.html 404.html
+python3 .github/scripts/check_site.py i18n
+python3 .github/scripts/check_site.py sitemap
+```
+
+`Validate` (`.github/workflows/ci.yml`) runs on every pull request and every push to `main`: HTML validity of both pages, the `i18n` key parity, the sitemap, the fleet's shared blocks and the commit subjects (at most 72 characters, no trailing period). Changes land on `main` by fast-forward once `Validate` is green.
+
+## Deployment
+
+GitHub Pages serves the root of `main`: every push to `main` is live in 1–2 minutes. There are no releases.
+
+## Documentation
+
+| File | What it holds |
+|---|---|
+| `.claude/CLAUDE.md` | How a Claude Code session works in this repository |
+
+## The solution
+
+This site is not part of the Looker Developer Agent and names none of its products. It belongs to the Coabana working set as a site, beside the Coabana site, whose `DESIGN.md` is the source of its design tokens.
+
+## License
+
+No license file: the content is the author's, all rights reserved.
