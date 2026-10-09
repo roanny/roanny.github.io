@@ -101,3 +101,40 @@ jobs:
             esac
           done < <(git log --no-merges --format=%s "$BASE_SHA..$HEAD_SHA")
           exit "$fail"
+
+      - name: Commit authors
+        # Every commit is authored as the operator's Gmail address,
+        # roannylamaslopez@gmail.com, which the checkout's local git config
+        # carries. Exactly two exceptions: Dependabot's heads
+        # (49699333+dependabot[bot]@users.noreply.github.com) and GitHub's own
+        # commits (noreply@github.com). The range is the pull request's
+        # commits, or on a push to `main` the pushed commits; history before
+        # the gate is not read.
+        if: '!cancelled()'
+        shell: bash
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+        run: |
+          if [ "$EVENT" = pull_request ]; then
+            range=("$BASE_SHA..$HEAD_SHA")
+          elif [ -z "$BEFORE_SHA" ] || [ "$BEFORE_SHA" = 0000000000000000000000000000000000000000 ]; then
+            range=(-1 "$AFTER_SHA")
+          else
+            range=("$BEFORE_SHA..$AFTER_SHA")
+          fi
+          log=$(git log --format='%h %ae' "${range[@]}") || {
+            echo "::error::cannot read the commit range ${range[*]}"; exit 1
+          }
+          fail=0
+          while read -r sha email; do
+            [ -n "$sha" ] || continue
+            case "$email" in
+              roannylamaslopez@gmail.com|49699333+dependabot[bot]@users.noreply.github.com|noreply@github.com) ;;
+              *) echo "::error::commit $sha is authored as $email, not roannylamaslopez@gmail.com"; fail=1 ;;
+            esac
+          done <<< "$log"
+          exit "$fail"

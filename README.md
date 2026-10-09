@@ -59,7 +59,7 @@ python3 .github/scripts/check_site.py i18n
 python3 .github/scripts/check_site.py sitemap
 ```
 
-`Validate` (`.github/workflows/ci.yml`) runs on every pull request and every push to `main`: HTML validity of both pages, the `i18n` key parity, the sitemap, the fleet's shared blocks and the commit subjects (at most 72 characters, no trailing period). Changes land on `main` by fast-forward once `Validate` is green. Two rulesets guard `main`: "Protect main branch" (no deletion, no force push, linear history; nobody bypasses it) and "Require Validate" (a green `Validate` before a push lands; the repository admin may bypass it to push a hand fix, and `Validate` still runs on that push).
+`Validate` (`.github/workflows/ci.yml`) runs on every pull request and every push to `main`: HTML validity of both pages, the `i18n` key parity, the sitemap, the fleet's shared blocks, the commit subjects (at most 72 characters, no trailing period) and the commit authors (`roannylamaslopez@gmail.com`, Dependabot and GitHub's own). Changes land on `main` by fast-forward once `Validate` is green. Two rulesets guard `main`: "Protect main branch" (no deletion, no force push, linear history; nobody bypasses it) and "Require Validate" (a green `Validate` before a push lands; the repository admin may bypass it to push a hand fix, and `Validate` still runs on that push).
 
 ## Deployment
 
@@ -79,4 +79,4 @@ This site is not part of the Looker Developer Agent and names none of its produc
 
 The code — the HTML structure, CSS and JavaScript of `index.html` and `404.html`, and everything under `.github/` and `.claude/` — is licensed under Apache-2.0; see [`LICENSE`](LICENSE).
 
-The personal data and the CV's text are not licensed: the name, contact details, profile, experience, certifications and skills, in the page, in its `i18n` dictionaries, in the structured data and in `og-image.jpg`, remain the author's, all rights reserved. A fork that reuses the code replaces them with its own.
+The personal data and the CV's text are not licensed: the name, contact details, profile, experience, certifications and skills, in the page, in its `i18n` dictionaries, in the structured data and in `og-image.jpg`, remain the author's, all rights reserved. The Coabana name and brand, which the page cites, are not licensed either. A fork that reuses the code replaces all of them with its own.
