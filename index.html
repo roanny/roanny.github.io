@@ -12,12 +12,12 @@
 <meta name="theme-color" content="#07131d">
 <link rel="canonical" href="https://roanny.github.io/">
 
-<!-- Versiones por idioma (la página cambia con ?lang=) -->
+<!-- Language versions (the page switches with ?lang=) -->
 <link rel="alternate" hreflang="en" href="https://roanny.github.io/">
 <link rel="alternate" hreflang="es" href="https://roanny.github.io/?lang=es">
 <link rel="alternate" hreflang="x-default" href="https://roanny.github.io/">
 
-<!-- Favicon como archivo: los data-URI no se indexan para los resultados de búsqueda -->
+<!-- Favicon as a file: data URIs are not indexed for search results -->
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 
@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="Roanny Lamas López">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="es_ES">
-<meta property="og:image" content="https://roanny.github.io/og-image.jpg">
+<meta property="og:image" content="https://roanny.github.io/og-image-2.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Roanny Lamas López — Data Engineer">
@@ -38,7 +38,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Roanny Lamas López — Data Engineer">
 <meta name="twitter:description" content="Data Engineer specialized in Google Cloud Platform, BigQuery, Looker and scalable data ecosystems.">
-<meta name="twitter:image" content="https://roanny.github.io/og-image.jpg">
+<meta name="twitter:image" content="https://roanny.github.io/og-image-2.jpg">
 <meta name="twitter:creator" content="@roannyll">
 
 <!-- Structured data -->
@@ -48,7 +48,7 @@
   "@type": "Person",
   "name": "Roanny Lamas López",
   "url": "https://roanny.github.io/",
-  "image": "https://roanny.github.io/og-image.jpg",
+  "image": "https://roanny.github.io/og-image-2.jpg",
   "jobTitle": "Data Engineer",
   "worksFor": { "@type": "Organization", "name": "Viajes El Corte Inglés" },
   "affiliation": {
@@ -77,16 +77,16 @@
 }
 </script>
 
-<!-- Tipografía (la misma familia que Coabana) -->
+<!-- Typography (the same family as Coabana) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Fuentes en carga asíncrona: no bloquean el primer pintado; el texto
-     sale con la fuente del sistema y cambia al llegar la de marca -->
+<!-- Fonts load asynchronously: they do not block the first paint; text
+     renders in the system font and switches when the brand font arrives -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"></noscript>
 
-<!-- Tema e indicador de JS antes del primer render, para evitar parpadeos -->
+<!-- Theme and JS flag before the first render, to avoid flicker -->
 <script>
 (function(){
   document.documentElement.classList.add('js');
@@ -102,8 +102,8 @@
 
 <style>
 /* ══════════════════════════════════════════════════════════
-   Identidad compartida con Coabana: tema caribeño-tech.
-   El tema claro es la variante "caribe de día" (arena/papel).
+   Identity shared with Coabana: the Caribbean-tech theme.
+   The light theme is the "Caribbean day" variant (sand/paper).
    ══════════════════════════════════════════════════════════ */
 :root {
   --bg: #07131d;
@@ -134,7 +134,7 @@
   --card-grad-top: rgba(255, 255, 255, 0.03);
   --card-grad-bottom: rgba(255, 255, 255, 0.008);
 
-  /* Tintes de acento (iguales en ambos temas) */
+  /* Accent tints (the same in both themes) */
   --tint-6: rgba(47, 214, 195, 0.06);
   --tint-8: rgba(47, 214, 195, 0.08);
   --tint-18: rgba(47, 214, 195, 0.18);
@@ -227,7 +227,7 @@ a:hover { color: var(--cyan); }
 
 .container { width: min(1120px, 92%); margin: 0 auto; }
 
-/* ── Fondo decorativo ─────────────────────────────────── */
+/* ── Decorative background ───────────────────────────── */
 .bg-decor { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
 
 .glow {
@@ -259,7 +259,7 @@ a:hover { color: var(--cyan); }
   -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,.25) 55%, transparent);
 }
 
-/* ── Navegación ───────────────────────────────────────── */
+/* ── Navigation ───────────────────────────────────────── */
 .nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -316,6 +316,7 @@ a:hover { color: var(--cyan); }
 .nav-links a:hover, .nav-links a.active { color: var(--ink); }
 
 .nav-actions { display: flex; align-items: center; gap: 12px; }
+.nav .btn { white-space: nowrap; }
 
 .lang-toggle, .theme-toggle {
   font-family: var(--font-mono);
@@ -363,7 +364,7 @@ a:hover { color: var(--cyan); }
 .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ── Botones ──────────────────────────────────────────── */
+/* ── Buttons ──────────────────────────────────────────── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -379,7 +380,7 @@ a:hover { color: var(--cyan); }
   transition: transform var(--t-fast) ease, box-shadow var(--t-fast) ease, background var(--t-fast) ease, border-color var(--t-fast) ease;
 }
 
-/* El botón primario es una constante de marca: idéntico en ambos temas */
+/* The primary button is a brand constant: identical in both themes */
 .btn-primary {
   background: linear-gradient(92deg, #2fd6c3, #4cc9f0);
   color: #05242a;
@@ -422,7 +423,7 @@ a:hover { color: var(--cyan); }
   align-items: center;
 }
 
-/* En pantallas muy altas el hero no necesita estirarse */
+/* On very tall screens the hero does not need to stretch */
 @media (min-height: 1600px) {
   .hero { min-height: unset; padding-bottom: 96px; }
 }
@@ -483,7 +484,7 @@ a:hover { color: var(--cyan); }
 
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; }
 
-/* ── Secciones ────────────────────────────────────────── */
+/* ── Sections ───────────────────────────────────────── */
 .section { padding: 96px 0; }
 
 .section-alt {
@@ -509,7 +510,7 @@ a:hover { color: var(--cyan); }
 .wave-divider { opacity: 0.6; }
 .wave-divider svg { display: block; width: 100%; height: 42px; }
 
-/* ── Sobre mí ─────────────────────────────────────────── */
+/* ── About ──────────────────────────────────────────── */
 .about-text {
   color: var(--muted);
   font-size: 1.08rem;
@@ -524,7 +525,7 @@ a:hover { color: var(--cyan); }
 
 .about-text em { color: var(--turquoise); font-style: normal; font-weight: 600; }
 
-/* ── Experiencia ──────────────────────────────────────── */
+/* ── Experience ───────────────────────────────────────── */
 .timeline { position: relative; margin-left: 8px; }
 
 .timeline::before {
@@ -562,7 +563,7 @@ a:hover { color: var(--cyan); }
 
 .tags { margin-top: 13px; }
 
-/* ── Certificaciones ──────────────────────────────────── */
+/* ── Certifications ───────────────────────────────────── */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -604,7 +605,7 @@ a:hover { color: var(--cyan); }
 .card .issuer { color: var(--turquoise); font-size: 0.88rem; font-weight: 600; }
 .card .date { font-family: var(--font-mono); font-size: 0.74rem; color: var(--muted); margin-top: auto; }
 
-/* ── Habilidades ──────────────────────────────────────── */
+/* ── Skills ───────────────────────────────────────────── */
 .skill-groups {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -631,7 +632,7 @@ a:hover { color: var(--cyan); }
   margin-bottom: 16px;
 }
 
-/* ── Chips (componente unificado con Coabana) ─────────── */
+/* ── Chips (component shared with Coabana) ───────────── */
 .chips {
   display: flex;
   flex-wrap: wrap;
@@ -655,7 +656,7 @@ a:hover { color: var(--cyan); }
   border-color: var(--tint-22);
 }
 
-/* ── Educación e idiomas ──────────────────────────────── */
+/* ── Education and languages ──────────────────────────── */
 .edu-card {
   max-width: 680px;
   padding: 28px 26px;
@@ -689,7 +690,7 @@ a:hover { color: var(--cyan); }
 .lang-item strong { display: block; font-family: var(--font-display); }
 .lang-item span { color: var(--muted); font-size: 0.86rem; }
 
-/* ── Contacto ─────────────────────────────────────────── */
+/* ── Contact ──────────────────────────────────────────── */
 .contact-panel {
   background: linear-gradient(170deg, var(--panel), var(--bg-2));
   border: 1px solid var(--line-strong);
@@ -728,7 +729,7 @@ a:hover { color: var(--cyan); }
 
 .footer-copy { color: var(--muted); font-size: 0.86rem; }
 
-/* ── Animaciones de aparición (solo con JavaScript) ───── */
+/* ── Reveal animations (only with JavaScript) ─────────── */
 html.js .reveal {
   opacity: 0;
   transform: translateY(22px);
@@ -749,7 +750,9 @@ html.js .reveal.visible { opacity: 1; transform: none; }
   .cards-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 720px) {
+/* The inline nav needs about 900px for the brand, four links and the
+   three actions; below that it collapses into the mobile menu. */
+@media (max-width: 900px) {
   .nav-links {
     position: fixed;
     top: var(--nav-h);
@@ -772,16 +775,35 @@ html.js .reveal.visible { opacity: 1; transform: none; }
 
   .hamburger { display: flex; }
   .nav .btn { display: none; }
+}
 
+@media (max-width: 720px) {
   .hero { padding-top: calc(var(--nav-h) + 56px); min-height: unset; }
   .section { padding: 72px 0; }
   .cards-grid, .skill-groups { grid-template-columns: 1fr; }
+}
+
+/* On phones the brand, the two toggles and the menu button share one row. */
+@media (max-width: 440px) {
+  .nav-inner { gap: 10px; }
+  .nav-actions { gap: 8px; }
+  .brand { gap: 8px; }
+  .brand-glyph { width: 26px; height: 26px; }
+  .brand-name { font-size: 1.02rem; letter-spacing: 0; }
+}
+
+@media (max-width: 359px) {
+  .nav-inner { gap: 6px; }
+  .nav-actions { gap: 6px; }
+  .brand { gap: 6px; }
+  .brand-glyph { width: 22px; height: 22px; }
+  .brand-name { font-size: 0.9rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- Fondo decorativo -->
+<!-- Decorative background -->
 <div class="bg-decor" aria-hidden="true">
   <div class="glow glow-turquoise"></div>
   <div class="glow glow-coral"></div>
@@ -791,13 +813,13 @@ html.js .reveal.visible { opacity: 1; transform: none; }
 <!-- ══════════ NAV ══════════ -->
 <header class="nav" id="nav">
   <div class="nav-inner">
-    <a class="brand" href="#top" aria-label="roanny.dev — home">
+    <a class="brand" href="#top" aria-label="roanny.github.io — home">
       <svg class="brand-glyph" viewBox="0 0 48 48" fill="none" aria-hidden="true">
         <circle cx="33" cy="14" r="7" fill="var(--coral)"/>
         <path d="M6 30c6-4 12-4 18 0s12 4 18 0" stroke="var(--turquoise)" stroke-width="3" fill="none" stroke-linecap="round"/>
         <path d="M10 40c5-3 10-3 15 0s10 3 15 0" stroke="var(--cyan)" stroke-width="3" fill="none" stroke-linecap="round"/>
       </svg>
-      <span class="brand-name">roanny.dev</span>
+      <span class="brand-name">roanny.github.io</span>
     </a>
 
     <nav class="nav-links" id="navLinks" aria-label="Sections">
@@ -842,7 +864,7 @@ html.js .reveal.visible { opacity: 1; transform: none; }
   </div>
 </header>
 
-<!-- ══════════ SOBRE MÍ ══════════ -->
+<!-- ══════════ ABOUT ══════════ -->
 <section class="section" id="about">
   <div class="container">
     <div class="section-head reveal">
@@ -859,7 +881,7 @@ html.js .reveal.visible { opacity: 1; transform: none; }
   </svg>
 </div>
 
-<!-- ══════════ EXPERIENCIA ══════════ -->
+<!-- ══════════ EXPERIENCE ══════════ -->
 <section class="section section-alt" id="experience">
   <div class="container">
     <div class="section-head reveal">
@@ -905,7 +927,7 @@ html.js .reveal.visible { opacity: 1; transform: none; }
   </div>
 </section>
 
-<!-- ══════════ CERTIFICACIONES ══════════ -->
+<!-- ══════════ CERTIFICATIONS ══════════ -->
 <section class="section" id="certifications">
   <div class="container">
     <div class="section-head reveal">
@@ -954,7 +976,7 @@ html.js .reveal.visible { opacity: 1; transform: none; }
   </svg>
 </div>
 
-<!-- ══════════ HABILIDADES ══════════ -->
+<!-- ══════════ SKILLS ══════════ -->
 <section class="section section-alt" id="skills">
   <div class="container">
     <div class="section-head reveal">
@@ -983,7 +1005,7 @@ html.js .reveal.visible { opacity: 1; transform: none; }
   </div>
 </section>
 
-<!-- ══════════ EDUCACIÓN ══════════ -->
+<!-- ══════════ EDUCATION ══════════ -->
 <section class="section" id="education">
   <div class="container">
     <div class="section-head reveal">
@@ -1007,7 +1029,7 @@ html.js .reveal.visible { opacity: 1; transform: none; }
   </div>
 </section>
 
-<!-- ══════════ CONTACTO ══════════ -->
+<!-- ══════════ CONTACT ══════════ -->
 <section class="section" id="contact">
   <div class="container">
     <div class="contact-panel reveal">
@@ -1151,7 +1173,7 @@ const i18n = {
   }
 };
 
-/* ── Tema claro/oscuro ────────────────────────────────── */
+/* ── Light/dark theme ─────────────────────────────────── */
 function applyTheme(theme){
   if(theme==='light'){ document.documentElement.setAttribute('data-theme','light'); }
   else { document.documentElement.removeAttribute('data-theme'); }
@@ -1171,8 +1193,8 @@ function toggleTheme(){
 }
 applyTheme(document.documentElement.getAttribute('data-theme')==='light' ? 'light' : 'dark');
 
-// Mientras no haya elección manual ni ?theme= en la URL,
-// el tema sigue al sistema en vivo
+// While there is no manual choice and no ?theme= in the URL,
+// the theme follows the system live
 if(window.matchMedia){
   const systemTheme = window.matchMedia('(prefers-color-scheme: light)');
   if(systemTheme.addEventListener){
@@ -1185,7 +1207,7 @@ if(window.matchMedia){
   }
 }
 
-/* ── Idioma (mismo patrón de botón único que Coabana) ─── */
+/* ── Language (the same single-button pattern as Coabana) */
 let currentLang = 'en';
 
 function setLang(lang){
@@ -1212,7 +1234,7 @@ function setLang(lang){
 function toggleLang(){
   const next = currentLang==='es' ? 'en' : 'es';
   setLang(next);
-  // Solo la elección manual se guarda; la detección automática no
+  // Only a manual choice is stored; automatic detection is not
   try{ localStorage.setItem('lang', next); }catch(e){}
 }
 
@@ -1225,13 +1247,13 @@ try{
 if(saved!=='es' && saved!=='en') saved='en';
 setLang(saved);
 
-/* ── Navegación: borde al hacer scroll ────────────────── */
+/* ── Navigation: border on scroll ───────────────────────── */
 const nav = document.getElementById('nav');
 function onScrollNav(){ nav.classList.toggle('scrolled', window.scrollY > 12); }
 window.addEventListener('scroll', onScrollNav, { passive: true });
 onScrollNav();
 
-/* ── Menú móvil ───────────────────────────────────────── */
+/* ── Mobile menu ──────────────────────────────────────── */
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 
@@ -1247,7 +1269,7 @@ navLinks.querySelectorAll('a').forEach(a=>
   })
 );
 
-/* ── Enlace activo según la sección visible ───────────── */
+/* ── Active link by visible section ───────────────────── */
 const sectionIds = ['experience','certifications','skills','contact'];
 const menuAnchors = Array.from(navLinks.querySelectorAll('a'));
 
@@ -1265,7 +1287,7 @@ sectionIds.forEach(id=>{
   if(el) sectionObserver.observe(el);
 });
 
-/* ── Animaciones de aparición ─────────────────────────── */
+/* ── Reveal animations ───────────────────────────────── */
 const revealObserver = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){

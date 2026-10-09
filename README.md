@@ -23,7 +23,7 @@ python3 -m http.server 8000
 ├── index.html        # The whole site: content, styles, i18n and script
 ├── 404.html          # Themed not-found page, self-contained
 ├── favicon.svg       # Favicon (sun over waves), with favicon-32.png as fallback
-├── og-image.jpg      # 1200×630 social card (LinkedIn, WhatsApp, X previews)
+├── og-image-2.jpg    # 1200×630 social card (LinkedIn, WhatsApp, X previews)
 ├── robots.txt        # Allows indexing and points at the sitemap
 ├── sitemap.xml       # Site map (update lastmod on content changes)
 ├── googlede4b53d1c977dbfc.html  # Google Search Console verification
@@ -47,7 +47,7 @@ The site shares its identity with [Coabana](https://coabana.github.io/): the sam
 
 ## SEO
 
-`index.html` carries the canonical URL, `hreflang` (`en`, `es` and `x-default` through `?lang=`), Open Graph and Twitter cards with `og-image.jpg`, and `Person` JSON-LD (with the Coabana affiliation). After a content change, update `lastmod` in `sitemap.xml`.
+`index.html` carries the canonical URL, `hreflang` (`en`, `es` and `x-default` through `?lang=`), Open Graph and Twitter cards with `og-image-2.jpg`, and `Person` JSON-LD (with the Coabana affiliation). After a content change, update `lastmod` in `sitemap.xml`.
 
 ## Development
 
@@ -79,4 +79,4 @@ This site is not part of the Looker Developer Agent and names none of its produc
 
 The code — the HTML structure, CSS and JavaScript of `index.html` and `404.html`, and everything under `.github/` and `.claude/` — is licensed under Apache-2.0; see [`LICENSE`](LICENSE).
 
-The personal data and the CV's text are not licensed: the name, contact details, profile, experience, certifications and skills, in the page, in its `i18n` dictionaries, in the structured data and in `og-image.jpg`, remain the author's, all rights reserved. The Coabana name and brand, which the page cites, are not licensed either. A fork that reuses the code replaces all of them with its own.
+The personal data and the CV's text are not licensed: the name, contact details, profile, experience, certifications and skills, in the page, in its `i18n` dictionaries, in the structured data and in `og-image-2.jpg`, remain the author's, all rights reserved. The Coabana name and brand, which the page cites, are not licensed either. A fork that reuses the code replaces all of them with its own.

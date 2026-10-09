@@ -6,7 +6,7 @@ The operator's personal CV and portfolio, served at https://roanny.github.io/. T
 
 - `index.html` — the whole site: content, styles, the `i18n` dictionaries and the script. No framework, no build step.
 - `404.html` — the themed not-found page, self-contained.
-- `favicon.svg`, `favicon-32.png`, `og-image.jpg` (the 1200×630 social card), `robots.txt`, `sitemap.xml`, `googlede4b53d1c977dbfc.html` (Search Console verification; never removed).
+- `favicon.svg`, `favicon-32.png`, `og-image-2.jpg` (the 1200×630 social card), `robots.txt`, `sitemap.xml`, `googlede4b53d1c977dbfc.html` (Search Console verification; never removed).
 - `.nojekyll` — Pages serves the tree as it is, without Jekyll.
 - `.github/scripts/check_site.py`, `.github/htmlvalidate.json` — the site's own gates, run by `Validate`.
 
@@ -16,6 +16,7 @@ The operator's personal CV and portfolio, served at https://roanny.github.io/. T
 - Preview: `python3 -m http.server 8000`, then http://localhost:8000 (`?lang=en|es` and `?theme=light|dark` force the language and the theme).
 - The gates by hand, as CI runs them: `npx --yes html-validate@11.16.0 --config .github/htmlvalidate.json index.html 404.html`, `python3 .github/scripts/check_site.py i18n`, `python3 .github/scripts/check_site.py sitemap`.
 - A content change updates `lastmod` in `sitemap.xml`.
+- A changed social card takes a new filename (`og-image-<n>.jpg`) and the three references in `index.html` (`og:image`, `twitter:image`, the JSON-LD `image`): LinkedIn, WhatsApp and X cache a card by its URL. After it is live, LinkedIn's Post Inspector (https://www.linkedin.com/post-inspector/) refetches it.
 
 ## Serving
 
