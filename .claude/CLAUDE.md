@@ -19,7 +19,7 @@ The operator's personal CV and portfolio, served at https://roanny.github.io/. T
 
 ## Serving
 
-GitHub Pages serves the root of `main`; a push to `main` is live in 1–2 minutes. There is no release and no `/release`: the fleet's `release` shared block does not apply, and a landing that changes the pages is a deploy (`git-hygiene.md`).
+GitHub Pages serves the root of `main`; a push to `main` is live in 1–2 minutes. Two rulesets guard `main`: "Protect main branch" (24806684: no deletion, no force push, linear history; no bypass) and "Require Validate" (24807145: `Validate` green; the repository admin bypasses it so the operator can fix by hand — a session never does, `git-hygiene.md`). There is no release and no `/release`: the fleet's `release` shared block does not apply, and a landing that changes the pages is a deploy (`git-hygiene.md`).
 
 ## The one coupling
 
@@ -31,7 +31,7 @@ The content is English by default with Spanish, by audience; the working documen
 
 ## Git identity
 
-Commits are authored as the operator's global git config has it: `Roanny Lamas <roanny.lamaslopez@viajeseci.es>`.
+Commits are authored as `Roanny Lamas <roannylamaslopez@gmail.com>`, set in this checkout's local git config; the corporate address is never used here.
 
 ## Index
 

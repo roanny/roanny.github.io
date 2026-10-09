@@ -5,10 +5,11 @@ Loads in every session: it carries the authorization clause, which has to be pre
 ## History and landing
 
 - **Linear history.** A branch lands on `main` by fast-forward, `git push origin <branch>:main`, once `Validate` is green on the pull request's head SHA. No merge commits; `gh pr merge` is denied, because it and the UI button collapse or rewrite the branch's commits.
+- **A session never pushes to `main` on its own.** The ruleset "Require Validate" (24807145) requires a green `Validate` but lets the repository admin bypass it, so the operator can push a fix by hand; sessions push with his credentials and inherit that bypass, so for them this rule is the gate, not the server. A session pushes to `main` only the head of a pull request whose `Validate` is green, by the fast-forward above.
 - **Commit subjects.** The whole first line at most 72 characters, no trailing period; measure it before the push (`printf '%s' "$subject" | wc -m`), because correcting a pushed subject is a force push. CI's "Commit subjects" step reads every commit a pull request adds.
 - **No force push, in any spelling** — `--force`, `-f`, `--force-with-lease`, a `+refspec` — on any branch.
 - **A landing can be a deploy.** GitHub Pages publishes `main` within minutes of every push to it: a landing that changes what a visitor sees is a deploy of the public site, and Round authorization says whose word that takes.
-- **No remote-ref deletion.** Deleting a remote branch or tag is the operator's act. The colon-refspec deletion (`git push origin :<ref>`) has no working deny; the rule is the guard, and the server rulesets on `main` and tags, once the operator adds them, are the floor.
+- **No remote-ref deletion.** Deleting a remote branch or tag is the operator's act. The colon-refspec deletion (`git push origin :<ref>`) has no working deny; the rule is the guard, and the ruleset "Protect main branch" (24806684: deletion, non-fast-forward, linear history; no bypass) is the floor on `main`. There are no tags here.
 
 ## Dependabot
 
