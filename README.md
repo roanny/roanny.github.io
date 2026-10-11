@@ -28,6 +28,7 @@ python3 -m http.server 8000
 ├── sitemap.xml       # Site map (update lastmod on content changes)
 ├── googlede4b53d1c977dbfc.html  # Google Search Console verification
 ├── .nojekyll         # Pages serves the tree as it is, without Jekyll
+├── AGENTS.md         # Instructions for coding agents (imported by .claude/CLAUDE.md)
 ├── LICENSE           # Apache-2.0, for the code only (see License)
 └── .github/          # Validate (ci.yml), its scripts, Dependabot
 ```
@@ -69,6 +70,7 @@ GitHub Pages serves the root of `main`: every push to `main` is live in 1–2 mi
 
 | File | What it holds |
 |---|---|
+| `AGENTS.md` | What any coding agent needs: what the site is, the checks, the conventions |
 | `.claude/CLAUDE.md` | How a Claude Code session works in this repository |
 
 ## The solution

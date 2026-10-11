@@ -1,6 +1,6 @@
 ---
 description: Rules content discipline — what a rule may hold (invariants, constraints, patterns) and what it may not (history, status, changelog fragments)
-paths: [".claude/**", "CLAUDE.md"]
+paths: [".claude/**", "CLAUDE.md", "AGENTS.md"]
 ---
 
 <!-- rules-discipline:shared begin -->
