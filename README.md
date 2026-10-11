@@ -60,7 +60,7 @@ python3 .github/scripts/check_site.py i18n
 python3 .github/scripts/check_site.py sitemap
 ```
 
-`Validate` (`.github/workflows/ci.yml`) runs on every pull request and every push to `main`: HTML validity of both pages, the `i18n` key parity, the sitemap, the fleet's shared blocks, the commit subjects (at most 72 characters, no trailing period) and the commit authors (`roannylamaslopez@gmail.com`, Dependabot and GitHub's own). Changes land on `main` by fast-forward once `Validate` is green. Two rulesets guard `main`: "Protect main branch" (no deletion, no force push, linear history; nobody bypasses it) and "Require Validate" (a green `Validate` before a push lands; the repository admin may bypass it to push a hand fix, and `Validate` still runs on that push).
+`Validate` (`.github/workflows/ci.yml`) runs on every pull request and every push to `main`: HTML validity of both pages, the `i18n` key parity, the sitemap, the fleet's shared blocks, the commit subjects (on pull requests; at most 72 characters, no trailing period) and the commit authors (`roannylamaslopez@gmail.com`, Dependabot and GitHub's own). Changes land on `main` by fast-forward once `Validate` is green. Two rulesets guard `main`: "Protect main branch" (no deletion, no force push, linear history; nobody bypasses it) and "Require Validate" (a green `Validate` before a push lands; the repository admin may bypass it to push a hand fix, and `Validate` still runs on that push).
 
 ## Deployment
 

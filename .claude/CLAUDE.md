@@ -1,6 +1,6 @@
 @../AGENTS.md
 
-# roanny-site — Claude Code
+# roanny.github.io — Claude Code
 
 `AGENTS.md`, imported above, says what the site is, how it is previewed and checked, and the conventions a change respects; this file adds what holds only for a Claude Code session.
 
@@ -10,11 +10,11 @@ Two rulesets guard `main`: "Protect main branch" (24806684: no deletion, no forc
 
 ## The one coupling
 
-The design tokens mirror `DESIGN.md` of `coabana-site` (checkout `coabana/`); `coabana-site`'s `CLAUDE.md` says the same from its side. Before stating what that file holds now, read it or verify it with the `contract-checker` agent. The JSON-LD names Coabana as the affiliation, and a call to action links to https://coabana.github.io/.
+The `DESIGN.md` that `AGENTS.md` § Conventions names is `coabana-site`'s (checkout `coabana/`), whose `CLAUDE.md` says the same from its side. Before stating what that file holds now, read it or verify it with the `contract-checker` agent.
 
 ## Index
 
-- `.claude/rules/git-hygiene.md` — linear history, the 72-character subject, the commit author, no force push or remote-ref deletion, landing as a deploy, the two rulesets, Dependabot, the round authorization (every session).
+- `.claude/rules/git-hygiene.md` — linear history, the 72-character subject, the commit author, no force push or remote-ref deletion, landing as a deploy, the two rulesets, Dependabot, the round authorization, the deny floor (every session).
 - `.claude/rules/rules-discipline.md` — what a rule file may hold (fleet shared block).
 - `.claude/rules/markdown-docs.md` — the shape of the Markdown working documents (fleet shared block).
 - No commands and no agents: there is no release and no code to review beyond the page's script.
