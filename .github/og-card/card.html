@@ -1,0 +1,50 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=block" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { width:1200px; height:630px; overflow:hidden; }
+  body {
+    position:relative; background:#07131d; color:#eaf4f4;
+    font-family:"Inter", system-ui, sans-serif;
+  }
+  .glow-a { position:absolute; left:-260px; top:-300px; width:900px; height:820px; border-radius:50%;
+    background:radial-gradient(closest-side, rgba(47,214,195,0.20), rgba(47,214,195,0) 100%); }
+  .glow-b { position:absolute; right:-300px; bottom:-360px; width:900px; height:820px; border-radius:50%;
+    background:radial-gradient(closest-side, rgba(255,143,107,0.10), rgba(255,143,107,0) 100%); }
+  .dots { position:absolute; inset:0; background-image:radial-gradient(rgba(158,216,219,0.09) 1px, transparent 1px); background-size:26px 26px; }
+  .wrap { position:absolute; left:96px; top:110px; right:96px; }
+  .brand { display:flex; align-items:center; gap:14px; }
+  .brand svg { width:42px; height:42px; }
+  .brand span { font-family:"Space Grotesk"; font-weight:700; font-size:27px; letter-spacing:.02em;
+    background:linear-gradient(92deg,#2fd6c3,#4cc9f0); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .pill { margin-top:44px; display:inline-flex; align-items:center; gap:12px; padding:14px 26px; border-radius:999px;
+    border:1.5px solid rgba(47,214,195,0.32); background:rgba(47,214,195,0.06);
+    font-family:"JetBrains Mono"; font-weight:600; font-size:19px; letter-spacing:.14em; color:#2fd6c3; }
+  .pill i { width:10px; height:10px; border-radius:50%; background:#2fd6c3; box-shadow:0 0 12px #2fd6c3; }
+  h1 { margin-top:38px; font-family:"Space Grotesk"; font-weight:700; font-size:89px; line-height:1; letter-spacing:-.01em; }
+  h1 em { font-style:normal; background:linear-gradient(92deg,#2fd6c3,#4cc9f0); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .sub { margin-top:30px; font-size:29px; color:#93adbc; }
+  .sub b { color:#eaf4f4; font-weight:600; }
+  .chips { margin-top:36px; display:flex; gap:12px; }
+  .chips span { padding:11px 18px; border-radius:10px; border:1.5px solid rgba(158,216,219,0.22); background:rgba(255,255,255,0.025);
+    font-family:"JetBrains Mono"; font-size:19px; color:#eaf4f4; }
+  .waves { position:absolute; left:0; right:0; bottom:0; height:70px; }
+</style></head>
+<body>
+  <div class="glow-a"></div><div class="glow-b"></div><div class="dots"></div>
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="33" cy="14" r="7" fill="#ff8f6b"/><path d="M6 30c6-4 12-4 18 0s12 4 18 0" stroke="#2fd6c3" stroke-width="3" stroke-linecap="round"/><path d="M10 40c5-3 10-3 15 0s10 3 15 0" stroke="#4cc9f0" stroke-width="3" stroke-linecap="round"/></svg>
+      <span>roanny.github.io</span>
+    </div>
+    <div class="pill"><i></i>DATA ENGINEER · GOOGLE CLOUD CERTIFIED ×2</div>
+    <h1>Roanny <em>Lamas López</em></h1>
+    <p class="sub"><b>Data Engineer</b> — scalable data ecosystems on Google Cloud</p>
+    <div class="chips"><span>BigQuery</span><span>Looker</span><span>Airflow / Composer</span><span>ETL · DWH</span></div>
+  </div>
+  <svg class="waves" viewBox="0 0 1200 70" preserveAspectRatio="none" fill="none">
+    <path d="M0 30 C150 10 300 50 450 30 S750 10 900 30 S1100 50 1200 28" stroke="rgba(76,201,240,0.5)" stroke-width="3"/>
+    <path d="M0 50 C160 32 320 66 480 48 S800 32 960 50 S1120 64 1200 46" stroke="rgba(47,214,195,0.35)" stroke-width="2.5"/>
+  </svg>
+</body></html>

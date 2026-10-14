@@ -8,12 +8,13 @@ The operator's personal CV and portfolio, served at https://roanny.github.io/ by
 - `404.html` — the themed not-found page, self-contained.
 - `favicon.svg`, `favicon-32.png`, `og-image-2.jpg` (the 1200×630 social card), `robots.txt`, `sitemap.xml`; `.nojekyll` makes Pages serve the tree as it is.
 - `.github/scripts/check_site.py`, `.github/htmlvalidate.json` — the site's own gates.
+- `.github/og-card/` — `card.html`, the source of the social card, and the command that renders it.
 
 ## Previewing and checking
 
 - Preview: `python3 -m http.server 8000`, then http://localhost:8000 (`?lang=en|es` and `?theme=light|dark` force the language and the theme).
 - The gates, as CI runs them: `npx --yes html-validate@11.16.0 --config .github/htmlvalidate.json index.html 404.html`, `python3 .github/scripts/check_site.py i18n`, `python3 .github/scripts/check_site.py sitemap`.
-- A content change updates `lastmod` in `sitemap.xml`. A changed social card takes a new filename (`og-image-<n>.jpg`) and the three references in `index.html` (`og:image`, `twitter:image`, the JSON-LD `image`), because LinkedIn, WhatsApp and X cache a card by its URL; LinkedIn's Post Inspector refetches it once it is live.
+- A content change updates `lastmod` in `sitemap.xml`. A changed social card is an edit of `.github/og-card/card.html` and a re-render (its `README.md` has the command); it takes a new filename (`og-image-<n>.jpg`) and the three references in `index.html` (`og:image`, `twitter:image`, the JSON-LD `image`), because LinkedIn, WhatsApp and X cache a card by its URL; LinkedIn's Post Inspector refetches it once it is live.
 
 CI (`Validate`, `.github/workflows/ci.yml`) refuses invalid HTML in either page, an `i18n` key missing from either language, a malformed sitemap, a changed shared block under `.claude/`, on pull requests a commit subject over 72 characters or with a trailing period, and on pull requests and pushes a commit author other than the one below, Dependabot's or GitHub's own.
 

@@ -2,3 +2,5 @@
 .claude/settings.local.json
 .claude/.cc-writes/
 .claude/worktrees/
+.github/og-card/card.png
+.github/og-card/card.jpg

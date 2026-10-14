@@ -30,7 +30,7 @@ python3 -m http.server 8000
 ├── .nojekyll         # Pages serves the tree as it is, without Jekyll
 ├── AGENTS.md         # Instructions for coding agents (imported by .claude/CLAUDE.md)
 ├── LICENSE           # Apache-2.0, for the code only (see License)
-└── .github/          # Validate (ci.yml), its scripts, Dependabot
+└── .github/          # Validate (ci.yml), its scripts, Dependabot, og-card/ (the card's source)
 ```
 
 ## Editing the text
@@ -48,7 +48,7 @@ The site shares its identity with [Coabana](https://coabana.github.io/): the sam
 
 ## SEO
 
-`index.html` carries the canonical URL, `hreflang` (`en`, `es` and `x-default` through `?lang=`), Open Graph and Twitter cards with `og-image-2.jpg`, and `Person` JSON-LD (with the Coabana affiliation). After a content change, update `lastmod` in `sitemap.xml`.
+`index.html` carries the canonical URL, `hreflang` (`en`, `es` and `x-default` through `?lang=`), Open Graph and Twitter cards with `og-image-2.jpg`, and `Person` JSON-LD (with the Coabana affiliation). The card is rendered from `.github/og-card/card.html`; `.github/og-card/README.md` has the command and the steps to publish a new one. After a content change, update `lastmod` in `sitemap.xml`.
 
 ## Development
 
@@ -81,4 +81,4 @@ This site is not part of the Looker Developer Agent and names none of its produc
 
 The code — the HTML structure, CSS and JavaScript of `index.html` and `404.html`, and everything under `.github/` and `.claude/` — is licensed under Apache-2.0; see [`LICENSE`](LICENSE).
 
-The personal data and the CV's text are not licensed: the name, contact details, profile, experience, certifications and skills, in the page, in its `i18n` dictionaries, in the structured data and in `og-image-2.jpg`, remain the author's, all rights reserved. The Coabana name and brand, which the page cites, are not licensed either. A fork that reuses the code replaces all of them with its own.
+The personal data and the CV's text are not licensed: the name, contact details, profile, experience, certifications and skills, in the page, in its `i18n` dictionaries, in the structured data, in `og-image-2.jpg` and in its source `.github/og-card/card.html`, remain the author's, all rights reserved. The Coabana name and brand, which the page cites, are not licensed either. A fork that reuses the code replaces all of them with its own.
