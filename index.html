@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Roanny Lamas López — Data Engineer</title>
-<meta name="description" content="Roanny Lamas López — Data Engineer specialized in Google Cloud Platform, BigQuery, Looker and scalable data ecosystems. Based in Montevideo, Uruguay.">
+<title>Roanny Lamas López — Data Engineer · Portfolio</title>
+<meta name="description" content="Data platforms and AI agents on Google Cloud. Projects, certifications and stack of Roanny Lamas López, Data Engineer and founder of Coabana. Montevideo, Uruguay.">
 <meta name="author" content="Roanny Lamas López">
 <meta name="keywords" content="Roanny Lamas López, Data Engineer, Google Cloud, BigQuery, Looker, Apache Airflow, Business Intelligence, ETL, Montevideo, Uruguay">
 <meta name="robots" content="index, follow">
@@ -22,23 +22,23 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Roanny Lamas López — Data Engineer">
-<meta property="og:description" content="Data Engineer specialized in Google Cloud Platform, BigQuery, Looker and scalable data ecosystems.">
+<meta property="og:title" content="Roanny Lamas López — Data Engineer · Portfolio">
+<meta property="og:description" content="Data platforms and AI agents on Google Cloud. Projects, certifications and stack of Roanny Lamas López, Data Engineer and founder of Coabana. Montevideo, Uruguay.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://roanny.github.io/">
 <meta property="og:site_name" content="Roanny Lamas López">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="es_ES">
-<meta property="og:image" content="https://roanny.github.io/og-image-2.jpg">
+<meta property="og:image" content="https://roanny.github.io/og-image-3.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Roanny Lamas López — Data Engineer">
+<meta property="og:image:alt" content="Roanny Lamas López — Data Engineer · Portfolio">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Roanny Lamas López — Data Engineer">
-<meta name="twitter:description" content="Data Engineer specialized in Google Cloud Platform, BigQuery, Looker and scalable data ecosystems.">
-<meta name="twitter:image" content="https://roanny.github.io/og-image-2.jpg">
+<meta name="twitter:title" content="Roanny Lamas López — Data Engineer · Portfolio">
+<meta name="twitter:description" content="Data platforms and AI agents on Google Cloud. Projects, certifications and stack of Roanny Lamas López, Data Engineer and founder of Coabana. Montevideo, Uruguay.">
+<meta name="twitter:image" content="https://roanny.github.io/og-image-3.jpg">
 <meta name="twitter:creator" content="@roannyll">
 
 <!-- Structured data -->
@@ -48,7 +48,7 @@
   "@type": "Person",
   "name": "Roanny Lamas López",
   "url": "https://roanny.github.io/",
-  "image": "https://roanny.github.io/og-image-2.jpg",
+  "image": "https://roanny.github.io/og-image-3.jpg",
   "jobTitle": "Data Engineer",
   "worksFor": { "@type": "Organization", "name": "Viajes El Corte Inglés" },
   "affiliation": {
@@ -525,7 +525,7 @@ a:hover { color: var(--cyan); }
 
 .about-text em { color: var(--turquoise); font-style: normal; font-weight: 600; }
 
-/* ── Experience ───────────────────────────────────────── */
+/* ── Trajectory ───────────────────────────────────────── */
 .timeline { position: relative; margin-left: 8px; }
 
 .timeline::before {
@@ -559,11 +559,13 @@ a:hover { color: var(--cyan); }
   margin: 5px 0 10px;
 }
 
-.job-desc { color: var(--muted); font-size: 0.96rem; max-width: 72ch; }
+.timeline-compact .job { padding-bottom: 26px; }
+
+.traj-cta { margin-top: 40px; }
 
 .tags { margin-top: 13px; }
 
-/* ── Certifications ───────────────────────────────────── */
+/* ── Cards: projects and certifications ───────────────── */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -605,7 +607,19 @@ a:hover { color: var(--cyan); }
 .card .issuer { color: var(--turquoise); font-size: 0.88rem; font-weight: 600; }
 .card .date { font-family: var(--font-mono); font-size: 0.74rem; color: var(--muted); margin-top: auto; }
 
-/* ── Skills ───────────────────────────────────────────── */
+.projects-grid { grid-template-columns: repeat(2, 1fr); }
+.card p { color: var(--muted); font-size: 0.94rem; }
+.card .tags { margin-top: auto; padding-top: 6px; }
+.card-link { align-self: flex-start; font-family: var(--font-display); font-weight: 600; font-size: 0.92rem; }
+
+/* A project's status: live (in production, in use), in development, delivered */
+.chip-status { align-self: flex-start; display: inline-flex; align-items: center; gap: 7px; }
+.chip-status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.st-live { color: var(--turquoise); border-color: var(--tint-22); background: var(--tint-6); }
+.st-dev { color: var(--sand); border-color: var(--line-strong); }
+.st-done { color: var(--muted); }
+
+/* ── Technologies ───────────────────────────────────── */
 .skill-groups {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -656,27 +670,16 @@ a:hover { color: var(--cyan); }
   border-color: var(--tint-22);
 }
 
-/* ── Education and languages ──────────────────────────── */
-.edu-card {
-  max-width: 680px;
-  padding: 28px 26px;
-  background: linear-gradient(170deg, var(--card-grad-top), var(--card-grad-bottom));
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
+/* ── Languages ──────────────────────────────────────── */
+.lang-head {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--coral);
+  margin: 56px 0 16px;
 }
-
-.edu-card h3 { font-size: 1.06rem; }
-.edu-card p { color: var(--muted); font-family: var(--font-mono); font-size: 0.84rem; margin-top: 6px; }
-
-.honor {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
-  font-size: 0.94rem;
-}
-
-.honor strong { color: var(--sand); }
 
 .lang-row { display: flex; flex-wrap: wrap; gap: 14px; }
 
@@ -750,9 +753,10 @@ html.js .reveal.visible { opacity: 1; transform: none; }
   .cards-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* The inline nav needs about 900px for the brand, four links and the
-   three actions; below that it collapses into the mobile menu. */
-@media (max-width: 900px) {
+/* The inline nav needs about 960px for the brand, four links and the
+   three actions in Spanish, the longer language; below 1001px it collapses
+   into the mobile menu, with room left for the fallback font. */
+@media (max-width: 1000px) {
   .nav-links {
     position: fixed;
     top: var(--nav-h);
@@ -780,7 +784,7 @@ html.js .reveal.visible { opacity: 1; transform: none; }
 @media (max-width: 720px) {
   .hero { padding-top: calc(var(--nav-h) + 56px); min-height: unset; }
   .section { padding: 72px 0; }
-  .cards-grid, .skill-groups { grid-template-columns: 1fr; }
+  .cards-grid, .projects-grid, .skill-groups { grid-template-columns: 1fr; }
 }
 
 /* On phones the brand, the two toggles and the menu button share one row. */
@@ -823,9 +827,9 @@ html.js .reveal.visible { opacity: 1; transform: none; }
     </a>
 
     <nav class="nav-links" id="navLinks" aria-label="Sections">
-      <a class="nav-item" href="#experience" data-i18n="nav_exp">Experience</a>
+      <a class="nav-item" href="#projects" data-i18n="nav_proj">Projects</a>
       <a class="nav-item" href="#certifications" data-i18n="nav_cert">Certifications</a>
-      <a class="nav-item" href="#skills" data-i18n="nav_skills">Skills</a>
+      <a class="nav-item" href="#technologies" data-i18n="nav_tech">Technologies</a>
       <a class="nav-item" href="#contact" data-i18n="nav_contact">Contact</a>
     </nav>
 
@@ -850,14 +854,14 @@ html.js .reveal.visible { opacity: 1; transform: none; }
       <span>Data Engineer · Google Cloud Certified ×2</span>
     </p>
     <h1 class="hero-title">Roanny <span class="grad">Lamas&nbsp;López</span></h1>
-    <p class="hero-sub" data-i18n="headline"><strong>Data Engineer</strong> at Viajes El Corte Inglés — building scalable data ecosystems on Google Cloud.</p>
+    <p class="hero-sub" data-i18n="headline"><strong>Data Engineer</strong> at Viajes El Corte Inglés and founder of Coabana — data platforms and AI agents on Google Cloud.</p>
     <ul class="chips hero-meta">
       <li class="chip">📍 Montevideo, Uruguay</li>
       <li class="chip" data-i18n="meta_degree">🎓 Computer Science Engineer</li>
-      <li class="chip" data-i18n="meta_exp">💼 Data · BI · Cloud</li>
+      <li class="chip" data-i18n="meta_exp">💼 Data platforms · BI · AI agents</li>
     </ul>
     <div class="hero-ctas">
-      <a class="btn btn-primary" href="https://www.linkedin.com/in/roannylamaslopez" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-primary" href="https://www.linkedin.com/in/roannylamaslopez" target="_blank" rel="noopener" data-i18n="cta_linkedin">Full CV on LinkedIn</a>
       <a class="btn btn-ghost" href="https://github.com/roanny" target="_blank" rel="noopener">GitHub</a>
       <a class="btn btn-ghost" href="mailto:roannylamaslopez@gmail.com" data-i18n="cta_email">Email me</a>
     </div>
@@ -869,9 +873,9 @@ html.js .reveal.visible { opacity: 1; transform: none; }
   <div class="container">
     <div class="section-head reveal">
       <p class="kicker" data-i18n="about_kicker">About</p>
-      <h2 data-i18n="about_title">About me</h2>
+      <h2 data-i18n="about_title">What I build</h2>
     </div>
-    <p class="about-text reveal" data-i18n="about_text">I'm a Data Engineer focused on <em>democratizing data access</em>, ensuring data integrity and quality, and building scalable data infrastructure. I currently lead the integration of Looker across Viajes El Corte Inglés, working with a modern Google Cloud stack. Previously I led BI teams at PedidosYa (Delivery Hero), co-founded a software company, and built data warehouses in Spain's travel-tech sector.</p>
+    <p class="about-text reveal" data-i18n="about_text">I build data platforms on Google Cloud that people actually use: BigQuery warehouses with a governed semantic layer in Looker, pipelines that are observable and cheap to run, and AI agents grounded in the organization's own data. I have done it for a travel group, a food-delivery marketplace and travel-tech companies, and since 2025 through Coabana, my data studio. I work in English and Spanish, remotely from Montevideo.</p>
   </div>
 </section>
 
@@ -881,47 +885,72 @@ html.js .reveal.visible { opacity: 1; transform: none; }
   </svg>
 </div>
 
-<!-- ══════════ EXPERIENCE ══════════ -->
-<section class="section section-alt" id="experience">
+<!-- ══════════ PROJECTS ══════════ -->
+<section class="section section-alt" id="projects">
   <div class="container">
     <div class="section-head reveal">
-      <p class="kicker" data-i18n="exp_kicker">Track record</p>
-      <h2 data-i18n="exp_title">Experience</h2>
-      <p class="section-sub" data-i18n="exp_sub">A track record across data engineering, business intelligence and software development.</p>
+      <p class="kicker" data-i18n="proj_kicker">Portfolio</p>
+      <h2 data-i18n="proj_title">Projects</h2>
+      <p class="section-sub" data-i18n="proj_sub">What I have built, as cases: the problem, the build, the stack and where it stands. Most of this code is private; the Coabana site tells the rest.</p>
     </div>
-    <div class="timeline">
+    <div class="cards-grid projects-grid">
 
-      <div class="job reveal">
-        <div class="job-title" data-i18n="job1_title">Data Engineer</div>
-        <div class="job-company">Viajes El Corte Inglés</div>
-        <div class="job-meta" data-i18n="job1_meta">Mar 2022 – Present · Montevideo, Uruguay · Remote</div>
-        <p class="job-desc" data-i18n="job1_desc">Democratizing data access, ensuring data integrity and quality, building scalable data infrastructure, and leading the organization-wide integration of Looker.</p>
-        <div class="chips tags"><span class="chip chip-accent">BigQuery</span><span class="chip chip-accent">Looker</span><span class="chip chip-accent">GCP</span><span class="chip chip-accent">Data Warehousing</span><span class="chip chip-accent">Data Quality</span></div>
-      </div>
+      <article class="card reveal">
+        <span class="chip chip-status st-live" data-i18n="status_prod">In production</span>
+        <h3 data-i18n="proj1_title">AI agent for Looker developers on BigQuery</h3>
+        <div class="issuer">Coabana · 2025–<span data-i18n="yr_now">present</span></div>
+        <p data-i18n="proj1_text">An agent that lives inside Looker as an extension. From a request in plain language it produces a complete LookML project — views, explores, models, Looks and dashboards — validating every step against Looker and BigQuery, diagnoses existing dashboards and answers questions over the semantic layer, acting with the permissions of the user who asks. A Python agent on Google ADK and an MCP server for the Looker API, both on Cloud Run, and a React extension served by Looker; in production at a reference installation.</p>
+        <div class="chips tags"><span class="chip chip-accent">Google ADK</span><span class="chip chip-accent">MCP</span><span class="chip chip-accent">LookML</span><span class="chip chip-accent">BigQuery</span><span class="chip chip-accent">Cloud Run</span><span class="chip chip-accent">React</span></div>
+        <a class="card-link" href="https://coabana.github.io/" target="_blank" rel="noopener">Coabana <span aria-hidden="true">↗</span></a>
+      </article>
 
-      <div class="job reveal">
-        <div class="job-title" data-i18n="job2_title">Co-Founder &amp; Software Engineer</div>
-        <div class="job-company">Alphalabs</div>
-        <div class="job-meta" data-i18n="job2_meta">May 2020 – Jan 2022 · Montevideo, Uruguay · Hybrid</div>
-        <p class="job-desc" data-i18n="job2_desc">Technical Leader: drafted technical proposals for innovative solutions, defined project budgets, guided technical execution, led business analytics projects and identified potential clients.</p>
-        <div class="chips tags"><span class="chip chip-accent">Technical Leadership</span><span class="chip chip-accent">GCP</span><span class="chip chip-accent">Business Analytics</span><span class="chip chip-accent">Software Engineering</span></div>
-      </div>
+      <article class="card reveal">
+        <span class="chip chip-status st-live" data-i18n="status_use">In use</span>
+        <h3 data-i18n="proj2_title">Looker administration toolkit</h3>
+        <div class="issuer">Coabana · 2025–<span data-i18n="yr_now">present</span></div>
+        <p data-i18n="proj2_text">Plan-then-apply administration of a Looker instance: users, groups, roles, folder permissions, user attributes, schedules and content. Every write is previewed as a plan before it is applied, every write command has a real dry run, and the same operations are exposed as a CLI and as an MCP server for agents.</p>
+        <div class="chips tags"><span class="chip chip-accent">Python</span><span class="chip chip-accent">Looker API</span><span class="chip chip-accent">MCP</span><span class="chip chip-accent">CLI</span></div>
+      </article>
 
-      <div class="job reveal">
-        <div class="job-title" data-i18n="job3_title">BI Tools Manager</div>
-        <div class="job-company">PedidosYa (Delivery Hero)</div>
-        <div class="job-meta" data-i18n="job3_meta">May 2020 – May 2021 · Montevideo, Uruguay · Hybrid</div>
-        <p class="job-desc" data-i18n="job3_desc">Led the team responsible for BI tools (Looker &amp; Tableau) and developed the data layer powering business KPIs, on a 100% Google Cloud stack: Composer, BigQuery, Dataproc, Cloud Build and Cloud Storage. Managed a team of five.</p>
-        <div class="chips tags"><span class="chip chip-accent">Looker</span><span class="chip chip-accent">Tableau</span><span class="chip chip-accent">BigQuery</span><span class="chip chip-accent">Composer</span><span class="chip chip-accent">Team Lead</span></div>
-      </div>
+      <article class="card reveal">
+        <span class="chip chip-status st-dev" data-i18n="status_dev">In development</span>
+        <h3 data-i18n="proj3_title">Cost audit agent for Google Cloud</h3>
+        <div class="issuer">Coabana · 2026</div>
+        <p data-i18n="proj3_text">A Google ADK agent that explains a change in Google Cloud spend from the billing export: trend, breakdown by service, SKU and project, gross and net of credits, whether an anomaly is price or volume, and the evidence behind it, down to the BigQuery job or the dbt commit that changed a model's cost. Every figure in its report is labeled real, validated price or estimate.</p>
+        <div class="chips tags"><span class="chip chip-accent">Google ADK</span><span class="chip chip-accent">BigQuery</span><span class="chip chip-accent">Billing export</span><span class="chip chip-accent">Gemini</span></div>
+      </article>
 
-      <div class="job reveal">
-        <div class="job-title" data-i18n="job4_title">Business Intelligence Developer</div>
-        <div class="job-company">Bluekiri</div>
-        <div class="job-meta" data-i18n="job4_meta">May 2019 – May 2020 · Palma, Spain · On-site</div>
-        <p class="job-desc" data-i18n="job4_desc">Built the organization's Data Warehouse and Data Marts, defining standards and best practices. Worked with MicroStrategy, Apache Airflow, Pentaho Data Integration, PostgreSQL and Azure DevOps.</p>
+      <article class="card reveal">
+        <span class="chip chip-status st-live" data-i18n="status_prod">In production</span>
+        <h3 data-i18n="proj4_title">Looker at scale on BigQuery</h3>
+        <div class="issuer">Viajes El Corte Inglés · 2022–<span data-i18n="yr_now">present</span></div>
+        <p data-i18n="proj4_text">Organization-wide adoption of Looker on a BigQuery data platform: semantic models and governed metrics, access and cost control, data quality, and AI agents that let business teams explore their data in natural language. Google Cloud end to end.</p>
+        <div class="chips tags"><span class="chip chip-accent">BigQuery</span><span class="chip chip-accent">Looker</span><span class="chip chip-accent">Cloud Composer</span><span class="chip chip-accent">Dataflow</span><span class="chip chip-accent">Terraform</span></div>
+      </article>
+
+      <article class="card reveal">
+        <span class="chip chip-status st-done" data-i18n="status_done">Delivered</span>
+        <h3 data-i18n="proj5_title">BI tools platform at PedidosYa (Delivery Hero)</h3>
+        <div class="issuer">2020–2021</div>
+        <p data-i18n="proj5_text">Led the team of five behind the company's BI tools, Looker and Tableau, and built the data layer powering its business KPIs on a Google Cloud stack: Composer, BigQuery, Dataproc, Cloud Build and Cloud Storage.</p>
+        <div class="chips tags"><span class="chip chip-accent">Looker</span><span class="chip chip-accent">Tableau</span><span class="chip chip-accent">BigQuery</span><span class="chip chip-accent">Composer</span><span class="chip chip-accent">Dataproc</span></div>
+      </article>
+
+      <article class="card reveal">
+        <span class="chip chip-status st-done" data-i18n="status_done">Delivered</span>
+        <h3 data-i18n="proj6_title">Enterprise data warehouse for travel-tech</h3>
+        <div class="issuer">Bluekiri · 2019–2020</div>
+        <p data-i18n="proj6_text">Built the organization's data warehouse and data marts and set the standards, best practices and methodology behind them: MicroStrategy for analytics, Apache Airflow for orchestration, Pentaho Data Integration, PostgreSQL, Azure DevOps.</p>
         <div class="chips tags"><span class="chip chip-accent">MicroStrategy</span><span class="chip chip-accent">Airflow</span><span class="chip chip-accent">Pentaho</span><span class="chip chip-accent">PostgreSQL</span><span class="chip chip-accent">Azure DevOps</span></div>
-      </div>
+      </article>
+
+      <article class="card reveal">
+        <span class="chip chip-status st-done" data-i18n="status_done">Delivered</span>
+        <h3 data-i18n="proj7_title">Business analytics projects on Google Cloud</h3>
+        <div class="issuer">Alphalabs · 2020–2022</div>
+        <p data-i18n="proj7_text">Co-founder and technical lead of a software company: technical proposals and budgets, the technical execution of client projects, and business analytics projects on Google Cloud.</p>
+        <div class="chips tags"><span class="chip chip-accent">Google Cloud</span><span class="chip chip-accent" data-i18n="chip_ba">Business analytics</span><span class="chip chip-accent" data-i18n="chip_tl">Technical leadership</span></div>
+      </article>
 
     </div>
   </div>
@@ -976,52 +1005,88 @@ html.js .reveal.visible { opacity: 1; transform: none; }
   </svg>
 </div>
 
-<!-- ══════════ SKILLS ══════════ -->
-<section class="section section-alt" id="skills">
+<!-- ══════════ TECHNOLOGIES ══════════ -->
+<section class="section section-alt" id="technologies">
   <div class="container">
     <div class="section-head reveal">
-      <p class="kicker" data-i18n="skills_kicker">Toolbox</p>
-      <h2 data-i18n="skills_title">Skills</h2>
-      <p class="section-sub" data-i18n="skills_sub">Tools and domains I work with every day.</p>
+      <p class="kicker" data-i18n="tech_kicker">Stack</p>
+      <h2 data-i18n="tech_title">Technologies</h2>
+      <p class="section-sub" data-i18n="tech_sub">The tools I work with, by layer.</p>
     </div>
     <div class="skill-groups">
       <div class="skill-group reveal">
-        <h3 data-i18n="sg1">Data Engineering</h3>
-        <div class="chips"><span class="chip">BigQuery</span><span class="chip">Apache Airflow / Composer</span><span class="chip">Dataproc</span><span class="chip">ETL/ELT</span><span class="chip">Data Warehousing</span><span class="chip">Data Quality &amp; Integrity</span><span class="chip">SQL</span><span class="chip">Terraform</span></div>
+        <h3 data-i18n="tg1">Warehouse &amp; storage</h3>
+        <div class="chips"><span class="chip">BigQuery</span><span class="chip">Cloud Storage</span><span class="chip">Dataproc</span><span class="chip">PostgreSQL</span></div>
       </div>
       <div class="skill-group reveal">
-        <h3 data-i18n="sg2">Business Intelligence</h3>
-        <div class="chips"><span class="chip">Looker / LookML</span><span class="chip">Tableau</span><span class="chip">MicroStrategy</span><span class="chip">Pentaho</span><span class="chip">KPIs &amp; Analytics</span><span class="chip">Data Modeling</span></div>
+        <h3 data-i18n="tg2">Pipelines &amp; orchestration</h3>
+        <div class="chips"><span class="chip">Cloud Composer / Apache Airflow</span><span class="chip">Dataflow</span><span class="chip">dbt</span><span class="chip">Cloud Build</span><span class="chip">ELT</span></div>
       </div>
       <div class="skill-group reveal">
-        <h3 data-i18n="sg3">Cloud &amp; DevOps</h3>
-        <div class="chips"><span class="chip">Google Cloud Platform</span><span class="chip">Cloud Build</span><span class="chip">Cloud Storage</span><span class="chip">Microsoft Azure</span><span class="chip">Azure DevOps</span><span class="chip">PostgreSQL</span></div>
+        <h3 data-i18n="tg3">Semantic layer &amp; BI</h3>
+        <div class="chips"><span class="chip">Looker / LookML</span><span class="chip">Tableau</span><span class="chip">MicroStrategy</span><span class="chip">Pentaho</span></div>
       </div>
       <div class="skill-group reveal">
-        <h3 data-i18n="sg4">Leadership</h3>
-        <div class="chips"><span class="chip" data-i18n="sk_team">Team Leadership</span><span class="chip" data-i18n="sk_pm">Project Management</span><span class="chip">Scrum / Agile</span><span class="chip" data-i18n="sk_se">Software Engineering</span></div>
+        <h3 data-i18n="tg4">Infrastructure &amp; ops</h3>
+        <div class="chips"><span class="chip">Google Cloud Platform</span><span class="chip">Terraform</span><span class="chip">Cloud Run</span><span class="chip">IAM</span><span class="chip">Azure DevOps</span></div>
+      </div>
+      <div class="skill-group reveal">
+        <h3 data-i18n="tg5">AI agents</h3>
+        <div class="chips"><span class="chip">Google ADK</span><span class="chip">Model Context Protocol</span><span class="chip">Gemini</span><span class="chip">Vertex AI</span></div>
+      </div>
+      <div class="skill-group reveal">
+        <h3 data-i18n="tg6">Languages</h3>
+        <div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">TypeScript</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ EDUCATION ══════════ -->
-<section class="section" id="education">
+<!-- ══════════ TRAJECTORY ══════════ -->
+<section class="section" id="trajectory">
   <div class="container">
     <div class="section-head reveal">
-      <p class="kicker" data-i18n="edu_kicker">Foundations</p>
-      <h2 data-i18n="edu_title">Education</h2>
+      <p class="kicker" data-i18n="traj_kicker">Track record</p>
+      <h2 data-i18n="traj_title">Trajectory</h2>
+      <p class="section-sub" data-i18n="traj_sub">The short version. The full CV, with every role described, is on LinkedIn.</p>
     </div>
-    <div class="edu-card reveal">
-      <h3 data-i18n="edu_school">Universidad de las Ciencias Informáticas (UCI)</h3>
-      <p data-i18n="edu_degree">Computer Science Engineer · 2009 – 2014 · GPA 4.94/5</p>
-      <div class="honor" data-i18n="edu_honor">🏅 Graduated with <strong>First Class Honors (Summa cum laude)</strong> — Gold Title of the 8th Graduation.</div>
+    <div class="timeline timeline-compact">
+      <div class="job reveal">
+        <div class="job-title" data-i18n="traj1_title">Founder</div>
+        <div class="job-company">Coabana</div>
+        <div class="job-meta" data-i18n="traj1_meta">Aug 2025 – Present · Montevideo, Uruguay · Remote</div>
+      </div>
+      <div class="job reveal">
+        <div class="job-title" data-i18n="traj2_title">Data Engineer</div>
+        <div class="job-company">Viajes El Corte Inglés</div>
+        <div class="job-meta" data-i18n="traj2_meta">Mar 2022 – Present · Montevideo, Uruguay · Remote</div>
+      </div>
+      <div class="job reveal">
+        <div class="job-title" data-i18n="traj3_title">Co-Founder, Software Engineer</div>
+        <div class="job-company">Alphalabs</div>
+        <div class="job-meta" data-i18n="traj3_meta">May 2020 – Jan 2022 · Montevideo, Uruguay</div>
+      </div>
+      <div class="job reveal">
+        <div class="job-title" data-i18n="traj4_title">BI Tools Manager</div>
+        <div class="job-company">PedidosYa (Delivery Hero)</div>
+        <div class="job-meta" data-i18n="traj4_meta">May 2020 – May 2021 · Montevideo, Uruguay</div>
+      </div>
+      <div class="job reveal">
+        <div class="job-title" data-i18n="traj5_title">Business Intelligence Developer</div>
+        <div class="job-company">Bluekiri</div>
+        <div class="job-meta" data-i18n="traj5_meta">May 2019 – May 2020 · Palma, Spain</div>
+      </div>
+      <div class="job reveal">
+        <div class="job-title" data-i18n="traj6_title">Computer Science Engineer</div>
+        <div class="job-company">Universidad de las Ciencias Informáticas (UCI)</div>
+        <div class="job-meta" data-i18n="traj6_meta">2009 – 2014 · Gold Title (Summa cum laude) · GPA 4.94/5</div>
+      </div>
+    </div>
+    <div class="traj-cta reveal">
+      <a class="btn btn-primary" href="https://www.linkedin.com/in/roannylamaslopez" target="_blank" rel="noopener" data-i18n="cta_linkedin_cv">Full CV on LinkedIn</a>
     </div>
 
-    <div class="section-head reveal" style="margin-top:64px">
-      <p class="kicker" data-i18n="lang_kicker">Communication</p>
-      <h2 data-i18n="lang_title">Languages</h2>
-    </div>
+    <h3 class="lang-head reveal" data-i18n="lang_title">Languages</h3>
     <div class="lang-row">
       <div class="lang-item reveal"><strong data-i18n="lang_es">Spanish</strong><span data-i18n="lang_es_lvl">Native</span></div>
       <div class="lang-item reveal"><strong data-i18n="lang_en">English</strong><span data-i18n="lang_en_lvl">Professional working proficiency</span></div>
@@ -1050,7 +1115,7 @@ html.js .reveal.visible { opacity: 1; transform: none; }
 <!-- ══════════ FOOTER ══════════ -->
 <footer class="footer">
   <div class="container">
-    <p class="footer-tag" data-i18n="footer_tag">Data Engineering · Google Cloud</p>
+    <p class="footer-tag" data-i18n="footer_tag">Data platforms · AI agents · Google Cloud</p>
     <p class="footer-copy" data-i18n="footer">© <span id="year"></span> Roanny Lamas López · Built with care, hosted on GitHub Pages.</p>
   </div>
 </footer>
@@ -1058,30 +1123,37 @@ html.js .reveal.visible { opacity: 1; transform: none; }
 <script>
 const i18n = {
   en: {
-    nav_exp:"Experience", nav_cert:"Certifications", nav_skills:"Skills", nav_contact:"Contact",
+    nav_proj:"Projects", nav_cert:"Certifications", nav_tech:"Technologies", nav_contact:"Contact",
     nav_cta:"Let's talk", theme_to_light:"Switch to light theme", theme_to_dark:"Switch to dark theme",
-    headline:'<strong>Data Engineer</strong> at Viajes El Corte Inglés — building scalable data ecosystems on Google Cloud.',
+    meta_desc:"Data platforms and AI agents on Google Cloud. Projects, certifications and stack of Roanny Lamas López, Data Engineer and founder of Coabana. Montevideo, Uruguay.",
+    headline:'<strong>Data Engineer</strong> at Viajes El Corte Inglés and founder of Coabana — data platforms and AI agents on Google Cloud.',
     meta_degree:"🎓 Computer Science Engineer",
-    meta_exp:"💼 Data · BI · Cloud",
+    meta_exp:"💼 Data platforms · BI · AI agents",
+    cta_linkedin:"Full CV on LinkedIn",
     cta_email:"Email me",
     about_kicker:"About",
-    about_title:"About me",
-    about_text:'I\'m a Data Engineer focused on <em>democratizing data access</em>, ensuring data integrity and quality, and building scalable data infrastructure. I currently lead the integration of Looker across Viajes El Corte Inglés, working with a modern Google Cloud stack. Previously I led BI teams at PedidosYa (Delivery Hero), co-founded a software company, and built data warehouses in Spain\'s travel-tech sector.',
-    exp_kicker:"Track record",
-    exp_title:"Experience",
-    exp_sub:"A track record across data engineering, business intelligence and software development.",
-    job1_title:"Data Engineer",
-    job1_meta:"Mar 2022 – Present · Montevideo, Uruguay · Remote",
-    job1_desc:"Democratizing data access, ensuring data integrity and quality, building scalable data infrastructure, and leading the organization-wide integration of Looker.",
-    job2_title:"Co-Founder & Software Engineer",
-    job2_meta:"May 2020 – Jan 2022 · Montevideo, Uruguay · Hybrid",
-    job2_desc:"Technical Leader: drafted technical proposals for innovative solutions, defined project budgets, guided technical execution, led business analytics projects and identified potential clients.",
-    job3_title:"BI Tools Manager",
-    job3_meta:"May 2020 – May 2021 · Montevideo, Uruguay · Hybrid",
-    job3_desc:"Led the team responsible for BI tools (Looker & Tableau) and developed the data layer powering business KPIs, on a 100% Google Cloud stack: Composer, BigQuery, Dataproc, Cloud Build and Cloud Storage. Managed a team of five.",
-    job4_title:"Business Intelligence Developer",
-    job4_meta:"May 2019 – May 2020 · Palma, Spain · On-site",
-    job4_desc:"Built the organization's Data Warehouse and Data Marts, defining standards and best practices. Worked with MicroStrategy, Apache Airflow, Pentaho Data Integration, PostgreSQL and Azure DevOps.",
+    about_title:"What I build",
+    about_text:"I build data platforms on Google Cloud that people actually use: BigQuery warehouses with a governed semantic layer in Looker, pipelines that are observable and cheap to run, and AI agents grounded in the organization's own data. I have done it for a travel group, a food-delivery marketplace and travel-tech companies, and since 2025 through Coabana, my data studio. I work in English and Spanish, remotely from Montevideo.",
+    proj_kicker:"Portfolio",
+    proj_title:"Projects",
+    proj_sub:"What I have built, as cases: the problem, the build, the stack and where it stands. Most of this code is private; the Coabana site tells the rest.",
+    status_prod:"In production", status_use:"In use", status_dev:"In development", status_done:"Delivered",
+    yr_now:"present",
+    proj1_title:"AI agent for Looker developers on BigQuery",
+    proj1_text:"An agent that lives inside Looker as an extension. From a request in plain language it produces a complete LookML project — views, explores, models, Looks and dashboards — validating every step against Looker and BigQuery, diagnoses existing dashboards and answers questions over the semantic layer, acting with the permissions of the user who asks. A Python agent on Google ADK and an MCP server for the Looker API, both on Cloud Run, and a React extension served by Looker; in production at a reference installation.",
+    proj2_title:"Looker administration toolkit",
+    proj2_text:"Plan-then-apply administration of a Looker instance: users, groups, roles, folder permissions, user attributes, schedules and content. Every write is previewed as a plan before it is applied, every write command has a real dry run, and the same operations are exposed as a CLI and as an MCP server for agents.",
+    proj3_title:"Cost audit agent for Google Cloud",
+    proj3_text:"A Google ADK agent that explains a change in Google Cloud spend from the billing export: trend, breakdown by service, SKU and project, gross and net of credits, whether an anomaly is price or volume, and the evidence behind it, down to the BigQuery job or the dbt commit that changed a model's cost. Every figure in its report is labeled real, validated price or estimate.",
+    proj4_title:"Looker at scale on BigQuery",
+    proj4_text:"Organization-wide adoption of Looker on a BigQuery data platform: semantic models and governed metrics, access and cost control, data quality, and AI agents that let business teams explore their data in natural language. Google Cloud end to end.",
+    proj5_title:"BI tools platform at PedidosYa (Delivery Hero)",
+    proj5_text:"Led the team of five behind the company's BI tools, Looker and Tableau, and built the data layer powering its business KPIs on a Google Cloud stack: Composer, BigQuery, Dataproc, Cloud Build and Cloud Storage.",
+    proj6_title:"Enterprise data warehouse for travel-tech",
+    proj6_text:"Built the organization's data warehouse and data marts and set the standards, best practices and methodology behind them: MicroStrategy for analytics, Apache Airflow for orchestration, Pentaho Data Integration, PostgreSQL, Azure DevOps.",
+    proj7_title:"Business analytics projects on Google Cloud",
+    proj7_text:"Co-founder and technical lead of a software company: technical proposals and budgets, the technical execution of client projects, and business analytics projects on Google Cloud.",
+    chip_ba:"Business analytics", chip_tl:"Technical leadership",
     cert_kicker:"Credentials",
     cert_title:"Licenses & Certifications",
     cert_sub:"Continuous learning, with a focus on Google Cloud.",
@@ -1093,17 +1165,27 @@ const i18n = {
     cert4_date:"Issued May 2024",
     cert5_date:"Issued Dec 2022",
     cert6_date:"Issued Aug 2020",
-    skills_kicker:"Toolbox",
-    skills_title:"Skills",
-    skills_sub:"Tools and domains I work with every day.",
-    sg1:"Data Engineering", sg2:"Business Intelligence", sg3:"Cloud & DevOps", sg4:"Leadership",
-    sk_team:"Team Leadership", sk_pm:"Project Management", sk_se:"Software Engineering",
-    edu_kicker:"Foundations",
-    edu_title:"Education",
-    edu_school:"Universidad de las Ciencias Informáticas (UCI)",
-    edu_degree:"Computer Science Engineer · 2009 – 2014 · GPA 4.94/5",
-    edu_honor:'🏅 Graduated with <strong>First Class Honors (Summa cum laude)</strong> — Gold Title of the 8th Graduation.',
-    lang_kicker:"Communication",
+    tech_kicker:"Stack",
+    tech_title:"Technologies",
+    tech_sub:"The tools I work with, by layer.",
+    tg1:"Warehouse & storage", tg2:"Pipelines & orchestration", tg3:"Semantic layer & BI",
+    tg4:"Infrastructure & ops", tg5:"AI agents", tg6:"Languages",
+    traj_kicker:"Track record",
+    traj_title:"Trajectory",
+    traj_sub:"The short version. The full CV, with every role described, is on LinkedIn.",
+    traj1_title:"Founder",
+    traj1_meta:"Aug 2025 – Present · Montevideo, Uruguay · Remote",
+    traj2_title:"Data Engineer",
+    traj2_meta:"Mar 2022 – Present · Montevideo, Uruguay · Remote",
+    traj3_title:"Co-Founder, Software Engineer",
+    traj3_meta:"May 2020 – Jan 2022 · Montevideo, Uruguay",
+    traj4_title:"BI Tools Manager",
+    traj4_meta:"May 2020 – May 2021 · Montevideo, Uruguay",
+    traj5_title:"Business Intelligence Developer",
+    traj5_meta:"May 2019 – May 2020 · Palma, Spain",
+    traj6_title:"Computer Science Engineer",
+    traj6_meta:"2009 – 2014 · Gold Title (Summa cum laude) · GPA 4.94/5",
+    cta_linkedin_cv:"Full CV on LinkedIn",
     lang_title:"Languages",
     lang_es:"Spanish", lang_es_lvl:"Native",
     lang_en:"English", lang_en_lvl:"Professional working proficiency",
@@ -1111,34 +1193,41 @@ const i18n = {
     contact_title:"Let's build something with data",
     contact_text:"Interested in scalable data platforms, BI architecture or Google Cloud? I'm always open to connecting.",
     cta_coabana:"Coabana — my data studio",
-    footer_tag:"Data Engineering · Google Cloud",
+    footer_tag:"Data platforms · AI agents · Google Cloud",
     footer:'© <span id="year"></span> Roanny Lamas López · Built with care, hosted on GitHub Pages.'
   },
   es: {
-    nav_exp:"Experiencia", nav_cert:"Certificaciones", nav_skills:"Habilidades", nav_contact:"Contacto",
+    nav_proj:"Proyectos", nav_cert:"Certificaciones", nav_tech:"Tecnologías", nav_contact:"Contacto",
     nav_cta:"Hablemos", theme_to_light:"Cambiar a tema claro", theme_to_dark:"Cambiar a tema oscuro",
-    headline:'<strong>Data Engineer</strong> en Viajes El Corte Inglés — construyendo ecosistemas de datos escalables en Google Cloud.',
+    meta_desc:"Plataformas de datos y agentes de IA en Google Cloud. Proyectos, certificaciones y stack de Roanny Lamas López, ingeniero de datos y fundador de Coabana. Montevideo, Uruguay.",
+    headline:'<strong>Ingeniero de datos</strong> en Viajes El Corte Inglés y fundador de Coabana: plataformas de datos y agentes de IA en Google Cloud.',
     meta_degree:"🎓 Ingeniero en Ciencias Informáticas",
-    meta_exp:"💼 Datos · BI · Cloud",
+    meta_exp:"💼 Plataformas de datos · BI · Agentes de IA",
+    cta_linkedin:"CV completo en LinkedIn",
     cta_email:"Escríbeme",
-    about_kicker:"Perfil",
-    about_title:"Sobre mí",
-    about_text:'Soy Data Engineer enfocado en <em>democratizar el acceso a los datos</em>, garantizar su integridad y calidad, y construir infraestructura de datos escalable. Actualmente lidero la integración de Looker en Viajes El Corte Inglés, trabajando con un stack moderno de Google Cloud. Antes lideré equipos de BI en PedidosYa (Delivery Hero), cofundé una empresa de software y construí data warehouses en el sector travel-tech de España.',
-    exp_kicker:"Trayectoria",
-    exp_title:"Experiencia",
-    exp_sub:"Una trayectoria entre ingeniería de datos, business intelligence y desarrollo de software.",
-    job1_title:"Data Engineer",
-    job1_meta:"Mar 2022 – Actualidad · Montevideo, Uruguay · Remoto",
-    job1_desc:"Democratización del acceso a los datos, garantía de integridad y calidad, construcción de infraestructura de datos escalable y liderazgo de la integración de Looker en toda la organización.",
-    job2_title:"Cofundador e Ingeniero de Software",
-    job2_meta:"May 2020 – Ene 2022 · Montevideo, Uruguay · Híbrido",
-    job2_desc:"Líder técnico: redacción de propuestas técnicas innovadoras, definición de presupuestos, dirección de la ejecución técnica, liderazgo de proyectos de analítica de negocio e identificación de clientes potenciales.",
-    job3_title:"BI Tools Manager",
-    job3_meta:"May 2020 – May 2021 · Montevideo, Uruguay · Híbrido",
-    job3_desc:"Lideré el equipo responsable de las herramientas de BI (Looker y Tableau) y desarrollé la capa de datos que alimenta los KPIs del negocio, sobre un stack 100% Google Cloud: Composer, BigQuery, Dataproc, Cloud Build y Cloud Storage. Equipo de cinco personas.",
-    job4_title:"Desarrollador de Business Intelligence",
-    job4_meta:"May 2019 – May 2020 · Palma, España · Presencial",
-    job4_desc:"Construcción del Data Warehouse y los Data Marts de la organización, definiendo estándares y buenas prácticas. Trabajé con MicroStrategy, Apache Airflow, Pentaho Data Integration, PostgreSQL y Azure DevOps.",
+    about_kicker:"Sobre mí",
+    about_title:"Qué construyo",
+    about_text:"Construyo plataformas de datos en Google Cloud que la gente usa de verdad: almacenes en BigQuery con una capa semántica gobernada en Looker, pipelines observables y baratos de operar, y agentes de IA anclados en los datos de la propia organización. Lo he hecho para un grupo de viajes, un marketplace de reparto de comida y empresas de travel-tech, y desde 2025 a través de Coabana, mi estudio de datos. Trabajo en inglés y español, en remoto desde Montevideo.",
+    proj_kicker:"Portafolio",
+    proj_title:"Proyectos",
+    proj_sub:"Lo que he construido, como casos: el problema, la construcción, el stack y dónde está. La mayor parte de este código es privado; el sitio de Coabana cuenta el resto.",
+    status_prod:"En producción", status_use:"En uso", status_dev:"En desarrollo", status_done:"Entregado",
+    yr_now:"actualidad",
+    proj1_title:"Agente de IA para desarrolladores de Looker sobre BigQuery",
+    proj1_text:"Un agente que vive dentro de Looker como extensión. A partir de una petición en lenguaje natural produce un proyecto LookML completo (vistas, explores, modelos, Looks y dashboards) validando cada paso contra Looker y BigQuery, diagnostica dashboards existentes y responde preguntas sobre la capa semántica, actuando con los permisos del usuario que pregunta. Un agente en Python sobre Google ADK y un servidor MCP para la API de Looker, ambos en Cloud Run, y una extensión en React servida por Looker; en producción en una instalación de referencia.",
+    proj2_title:"Herramientas de administración de Looker",
+    proj2_text:"Administración de una instancia de Looker en dos pasos, plan y aplicación: usuarios, grupos, roles, permisos de carpeta, atributos de usuario, programaciones y contenido. Cada escritura se previsualiza como un plan antes de aplicarse, cada comando que escribe tiene un dry run real, y las mismas operaciones se exponen como CLI y como servidor MCP para agentes.",
+    proj3_title:"Agente de auditoría de costes en Google Cloud",
+    proj3_text:"Un agente sobre Google ADK que explica un cambio en el gasto de Google Cloud a partir del billing export: tendencia, desglose por servicio, SKU y proyecto, bruto y neto de créditos, si una anomalía es de precio o de volumen, y la evidencia detrás, hasta el job de BigQuery o el commit de dbt que cambió el coste de un modelo. Cada cifra del informe va etiquetada como real, precio validado o estimación.",
+    proj4_title:"Looker a escala sobre BigQuery",
+    proj4_text:"Adopción de Looker en toda la organización sobre una plataforma de datos en BigQuery: modelos semánticos y métricas gobernadas, control de acceso y de coste, calidad del dato, y agentes de IA que permiten a los equipos de negocio explorar sus datos en lenguaje natural. Google Cloud de extremo a extremo.",
+    proj5_title:"Plataforma de herramientas de BI en PedidosYa (Delivery Hero)",
+    proj5_text:"Lideré el equipo de cinco personas detrás de las herramientas de BI de la empresa, Looker y Tableau, y construí la capa de datos de sus KPI de negocio sobre un stack de Google Cloud: Composer, BigQuery, Dataproc, Cloud Build y Cloud Storage.",
+    proj6_title:"Almacén de datos corporativo para travel-tech",
+    proj6_text:"Construí el almacén de datos y los data marts de la organización y fijé sus estándares, buenas prácticas y metodología: MicroStrategy para analítica, Apache Airflow para orquestación, Pentaho Data Integration, PostgreSQL y Azure DevOps.",
+    proj7_title:"Proyectos de analítica de negocio en Google Cloud",
+    proj7_text:"Cofundador y líder técnico de una empresa de software: propuestas técnicas y presupuestos, ejecución técnica de los proyectos de clientes y proyectos de analítica de negocio en Google Cloud.",
+    chip_ba:"Analítica de negocio", chip_tl:"Liderazgo técnico",
     cert_kicker:"Credenciales",
     cert_title:"Licencias y certificaciones",
     cert_sub:"Aprendizaje continuo, con foco en Google Cloud.",
@@ -1150,17 +1239,27 @@ const i18n = {
     cert4_date:"Emitida May 2024",
     cert5_date:"Emitida Dic 2022",
     cert6_date:"Emitida Ago 2020",
-    skills_kicker:"Herramientas",
-    skills_title:"Habilidades",
-    skills_sub:"Herramientas y dominios con los que trabajo a diario.",
-    sg1:"Ingeniería de Datos", sg2:"Business Intelligence", sg3:"Cloud y DevOps", sg4:"Liderazgo",
-    sk_team:"Liderazgo de equipos", sk_pm:"Gestión de proyectos", sk_se:"Ingeniería de software",
-    edu_kicker:"Formación",
-    edu_title:"Educación",
-    edu_school:"Universidad de las Ciencias Informáticas (UCI)",
-    edu_degree:"Ingeniero en Ciencias Informáticas · 2009 – 2014 · Promedio 4.94/5",
-    edu_honor:'🏅 Graduado con <strong>Título de Oro (Summa cum laude)</strong> — Título de Oro de la 8.ª graduación.',
-    lang_kicker:"Comunicación",
+    tech_kicker:"Stack",
+    tech_title:"Tecnologías",
+    tech_sub:"Las herramientas con las que trabajo, por capa.",
+    tg1:"Almacén y almacenamiento", tg2:"Pipelines y orquestación", tg3:"Capa semántica y BI",
+    tg4:"Infraestructura y operación", tg5:"Agentes de IA", tg6:"Lenguajes",
+    traj_kicker:"Trayectoria",
+    traj_title:"Trayectoria",
+    traj_sub:"La versión corta. El CV completo, con cada puesto descrito, está en LinkedIn.",
+    traj1_title:"Fundador",
+    traj1_meta:"Ago 2025 – Actualidad · Montevideo, Uruguay · Remoto",
+    traj2_title:"Ingeniero de datos",
+    traj2_meta:"Mar 2022 – Actualidad · Montevideo, Uruguay · Remoto",
+    traj3_title:"Cofundador, ingeniero de software",
+    traj3_meta:"May 2020 – Ene 2022 · Montevideo, Uruguay",
+    traj4_title:"Responsable de herramientas de BI",
+    traj4_meta:"May 2020 – May 2021 · Montevideo, Uruguay",
+    traj5_title:"Desarrollador de Business Intelligence",
+    traj5_meta:"May 2019 – May 2020 · Palma, España",
+    traj6_title:"Ingeniero en Ciencias Informáticas",
+    traj6_meta:"2009 – 2014 · Título de Oro (Summa cum laude) · Promedio 4,94/5",
+    cta_linkedin_cv:"CV completo en LinkedIn",
     lang_title:"Idiomas",
     lang_es:"Español", lang_es_lvl:"Nativo",
     lang_en:"Inglés", lang_en_lvl:"Competencia profesional",
@@ -1168,7 +1267,7 @@ const i18n = {
     contact_title:"Construyamos algo con datos",
     contact_text:"¿Te interesan las plataformas de datos escalables, la arquitectura de BI o Google Cloud? Siempre estoy abierto a conectar.",
     cta_coabana:"Coabana — mi estudio de datos",
-    footer_tag:"Ingeniería de Datos · Google Cloud",
+    footer_tag:"Plataformas de datos · Agentes de IA · Google Cloud",
     footer:'© <span id="year"></span> Roanny Lamas López · Hecho con cariño, alojado en GitHub Pages.'
   }
 };
@@ -1228,6 +1327,7 @@ function setLang(lang){
     const lbl2 = i18n[lang][th==='light' ? 'theme_to_dark' : 'theme_to_light'];
     tb.setAttribute('aria-label', lbl2); tb.title = lbl2;
   }
+  const md = document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', i18n[lang].meta_desc);
   const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
 }
 
@@ -1270,7 +1370,7 @@ navLinks.querySelectorAll('a').forEach(a=>
 );
 
 /* ── Active link by visible section ───────────────────── */
-const sectionIds = ['experience','certifications','skills','contact'];
+const sectionIds = ['projects','certifications','technologies','contact'];
 const menuAnchors = Array.from(navLinks.querySelectorAll('a'));
 
 const sectionObserver = new IntersectionObserver((entries)=>{

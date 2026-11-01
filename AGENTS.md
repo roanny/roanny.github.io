@@ -1,12 +1,12 @@
 # roanny.github.io
 
-The operator's personal CV and portfolio, served at https://roanny.github.io/ by GitHub Pages from the root of `main`. The repository is `roanny/roanny.github.io`, under his personal GitHub account rather than the Coabana organization; it is a site, not a product, and nothing consumes it. Every push to `main` is live within minutes, so a change a visitor would see never lands without the operator's word. `googlede4b53d1c977dbfc.html` (the Search Console verification) is never renamed or removed.
+The operator's personal portfolio, served at https://roanny.github.io/ by GitHub Pages from the root of `main`. The repository is `roanny/roanny.github.io`, under his personal GitHub account rather than the Coabana organization; it is a site, not a product, and nothing consumes it. Every push to `main` is live within minutes, so a change a visitor would see never lands without the operator's word. `googlede4b53d1c977dbfc.html` (the Search Console verification) is never renamed or removed.
 
 ## The tree
 
-- `index.html` — the whole site: content, styles, the `i18n` dictionaries and the script. No framework, no build step.
+- `index.html` — the whole site (projects, certifications, technologies, a compact trajectory that points to LinkedIn for the full CV, contact): content, styles, the `i18n` dictionaries and the script. No framework, no build step.
 - `404.html` — the themed not-found page, self-contained.
-- `favicon.svg`, `favicon-32.png`, `og-image-2.jpg` (the 1200×630 social card), `robots.txt`, `sitemap.xml`; `.nojekyll` makes Pages serve the tree as it is.
+- `favicon.svg`, `favicon-32.png`, `og-image-3.jpg` (the 1200×630 social card), `robots.txt`, `sitemap.xml`; `.nojekyll` makes Pages serve the tree as it is.
 - `.github/scripts/check_site.py`, `.github/htmlvalidate.json` — the site's own gates.
 - `.github/og-card/` — `card.html`, the source of the social card, and the command that renders it.
 

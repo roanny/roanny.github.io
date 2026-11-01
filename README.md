@@ -1,12 +1,12 @@
 # roanny.github.io
 
-The professional CV and portfolio of **Roanny Lamas López** (Data Engineer · Google Cloud), published with GitHub Pages at **https://roanny.github.io/**. One hand-written HTML file in plain HTML, CSS and JavaScript, with no framework and no build step. The site is in English by default, with Spanish.
+The professional portfolio of **Roanny Lamas López** (Data Engineer · Google Cloud), published with GitHub Pages at **https://roanny.github.io/**. One hand-written HTML file in plain HTML, CSS and JavaScript, with no framework and no build step. The site is in English by default, with Spanish.
 
 [![Validate](https://github.com/roanny/roanny.github.io/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/roanny/roanny.github.io/actions/workflows/ci.yml) [![License: Apache-2.0 (code)](https://img.shields.io/badge/license-Apache--2.0%20(code)-blue.svg)](LICENSE)
 
 ## What it does
 
-- Presents the profile, experience, certifications, skills and contact in a single page.
+- Presents the projects, as cases, with the certifications, the technologies, a compact trajectory and contact, in a single page. The full CV lives on LinkedIn, which the page links.
 - Speaks English and Spanish from one set of keys, and follows the visitor's system theme (dark by default, a light "Caribbean day" variant).
 - Carries the SEO a personal site needs: canonical URL, `hreflang`, Open Graph and Twitter cards, `Person` structured data, `robots.txt` and `sitemap.xml`.
 
@@ -23,7 +23,7 @@ python3 -m http.server 8000
 ├── index.html        # The whole site: content, styles, i18n and script
 ├── 404.html          # Themed not-found page, self-contained
 ├── favicon.svg       # Favicon (sun over waves), with favicon-32.png as fallback
-├── og-image-2.jpg    # 1200×630 social card (LinkedIn, WhatsApp, X previews)
+├── og-image-3.jpg    # 1200×630 social card (LinkedIn, WhatsApp, X previews)
 ├── robots.txt        # Allows indexing and points at the sitemap
 ├── sitemap.xml       # Site map (update lastmod on content changes)
 ├── googlede4b53d1c977dbfc.html  # Google Search Console verification
@@ -48,7 +48,7 @@ The site shares its identity with [Coabana](https://coabana.github.io/): the sam
 
 ## SEO
 
-`index.html` carries the canonical URL, `hreflang` (`en`, `es` and `x-default` through `?lang=`), Open Graph and Twitter cards with `og-image-2.jpg`, and `Person` JSON-LD (with the Coabana affiliation). The card is rendered from `.github/og-card/card.html`; `.github/og-card/README.md` has the command and the steps to publish a new one. After a content change, update `lastmod` in `sitemap.xml`.
+`index.html` carries the canonical URL, `hreflang` (`en`, `es` and `x-default` through `?lang=`), Open Graph and Twitter cards with `og-image-3.jpg`, and `Person` JSON-LD (with the Coabana affiliation). The card is rendered from `.github/og-card/card.html`; `.github/og-card/README.md` has the command and the steps to publish a new one. After a content change, update `lastmod` in `sitemap.xml`.
 
 ## Development
 
@@ -81,4 +81,4 @@ This site is not part of the Looker Developer Agent and names none of its produc
 
 The code — the HTML structure, CSS and JavaScript of `index.html` and `404.html`, and everything under `.github/` and `.claude/` — is licensed under Apache-2.0; see [`LICENSE`](LICENSE).
 
-The personal data and the CV's text are not licensed: the name, contact details, profile, experience, certifications and skills, in the page, in its `i18n` dictionaries, in the structured data, in `og-image-2.jpg` and in its source `.github/og-card/card.html`, remain the author's, all rights reserved. The Coabana name and brand, which the page cites, are not licensed either. A fork that reuses the code replaces all of them with its own.
+The personal data and the page's text are not licensed: the name, contact details, profile, projects, trajectory, certifications and technologies, in the page, in its `i18n` dictionaries, in the structured data, in `og-image-3.jpg` and in its source `.github/og-card/card.html`, remain the author's, all rights reserved. The Coabana name and brand, which the page cites, are not licensed either. A fork that reuses the code replaces all of them with its own.
