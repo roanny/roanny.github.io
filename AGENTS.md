@@ -6,7 +6,7 @@ The operator's personal portfolio, served at https://roanny.github.io/ by GitHub
 
 - `index.html` — the whole site (projects, certifications, technologies, a compact trajectory that points to LinkedIn for the full CV, contact): content, styles, the `i18n` dictionaries and the script. No framework, no build step.
 - `404.html` — the themed not-found page, self-contained.
-- `favicon.svg`, `favicon-32.png`, `og-image-3.jpg` (the 1200×630 social card), `robots.txt`, `sitemap.xml`; `.nojekyll` makes Pages serve the tree as it is.
+- `favicon.svg`, `favicon-32.png`, `og-image-4.jpg` (the 1200×630 social card), `robots.txt`, `sitemap.xml`; `.nojekyll` makes Pages serve the tree as it is.
 - `.github/scripts/check_site.py`, `.github/htmlvalidate.json` — the site's own gates.
 - `.github/og-card/` — `card.html`, the source of the social card, and the command that renders it.
 
