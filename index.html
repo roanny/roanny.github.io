@@ -899,9 +899,17 @@ html.js .reveal.visible { opacity: 1; transform: none; }
         <span class="chip chip-status st-live" data-i18n="status_prod">In production</span>
         <h3 data-i18n="proj1_title">AI agent for Looker developers on BigQuery</h3>
         <div class="issuer">Coabana · 2025–<span data-i18n="yr_now">present</span></div>
-        <p data-i18n="proj1_text">An agent that lives inside Looker as an extension. From a request in plain language it produces a complete LookML project — views, explores, models, Looks and dashboards — validating every step against Looker and BigQuery, diagnoses existing dashboards and answers questions over the semantic layer, acting with the permissions of the user who asks. A Python agent on Google ADK and an MCP server for the Looker API, both on Cloud Run, and a React extension served by Looker; in production at a reference installation.</p>
+        <p data-i18n="proj1_text">An agent that lives inside Looker as an extension. From a request in plain language it produces a complete LookML project — views, explores, models, Looks and dashboards — validating every step against Looker and BigQuery, diagnoses existing dashboards and answers questions over the semantic layer, acting with the permissions of the user who asks. A Python agent on Google ADK on Cloud Run, the MCP server of the next card, and a React extension served by Looker; in production at a reference installation.</p>
         <div class="chips tags"><span class="chip chip-accent">Google ADK</span><span class="chip chip-accent">MCP</span><span class="chip chip-accent">LookML</span><span class="chip chip-accent">BigQuery</span><span class="chip chip-accent">Cloud Run</span><span class="chip chip-accent">React</span></div>
         <a class="card-link" href="https://coabana.github.io/" target="_blank" rel="noopener">Coabana <span aria-hidden="true">↗</span></a>
+      </article>
+
+      <article class="card reveal">
+        <span class="chip chip-status st-live" data-i18n="status_prod">In production</span>
+        <h3 data-i18n="proj8_title">MCP server for the Looker API</h3>
+        <div class="issuer">Coabana · 2025–<span data-i18n="yr_now">present</span></div>
+        <p data-i18n="proj8_text">A Model Context Protocol server for the Looker API, open to any MCP client — an agent, Claude, Gemini or a developer's IDE — built for production rather than for a demo. Ten tool groups, from queries and explores to LookML, git and administration; per-user sessions that keep each developer's dev mode where they left it; the same tool names and capabilities as Google's MCP Toolbox for Looker, with folders, administration and content updates and deletes on top; and gates that refuse the irreversible operations unless they are explicitly enabled. It is the Looker arm of the agent above and runs beside it on Cloud Run.</p>
+        <div class="chips tags"><span class="chip chip-accent">Python</span><span class="chip chip-accent">FastMCP</span><span class="chip chip-accent">Looker API</span><span class="chip chip-accent">Cloud Run</span></div>
       </article>
 
       <article class="card reveal">
@@ -1032,7 +1040,7 @@ html.js .reveal.visible { opacity: 1; transform: none; }
       </div>
       <div class="skill-group reveal">
         <h3 data-i18n="tg5">AI agents</h3>
-        <div class="chips"><span class="chip">Google ADK</span><span class="chip">Model Context Protocol (MCP)</span><span class="chip">Gemini</span></div>
+        <div class="chips"><span class="chip">Google ADK</span><span class="chip">Model Context Protocol (MCP)</span><span class="chip">FastMCP</span><span class="chip">Gemini</span></div>
       </div>
       <div class="skill-group reveal">
         <h3 data-i18n="tg6">Languages</h3>
@@ -1140,7 +1148,9 @@ const i18n = {
     status_prod:"In production", status_use:"In use", status_dev:"In development", status_done:"Delivered",
     yr_now:"present",
     proj1_title:"AI agent for Looker developers on BigQuery",
-    proj1_text:"An agent that lives inside Looker as an extension. From a request in plain language it produces a complete LookML project — views, explores, models, Looks and dashboards — validating every step against Looker and BigQuery, diagnoses existing dashboards and answers questions over the semantic layer, acting with the permissions of the user who asks. A Python agent on Google ADK and an MCP server for the Looker API, both on Cloud Run, and a React extension served by Looker; in production at a reference installation.",
+    proj1_text:"An agent that lives inside Looker as an extension. From a request in plain language it produces a complete LookML project — views, explores, models, Looks and dashboards — validating every step against Looker and BigQuery, diagnoses existing dashboards and answers questions over the semantic layer, acting with the permissions of the user who asks. A Python agent on Google ADK on Cloud Run, the MCP server of the next card, and a React extension served by Looker; in production at a reference installation.",
+    proj8_title:"MCP server for the Looker API",
+    proj8_text:"A Model Context Protocol server for the Looker API, open to any MCP client — an agent, Claude, Gemini or a developer's IDE — built for production rather than for a demo. Ten tool groups, from queries and explores to LookML, git and administration; per-user sessions that keep each developer's dev mode where they left it; the same tool names and capabilities as Google's MCP Toolbox for Looker, with folders, administration and content updates and deletes on top; and gates that refuse the irreversible operations unless they are explicitly enabled. It is the Looker arm of the agent above and runs beside it on Cloud Run.",
     proj2_title:"Looker administration toolkit",
     proj2_text:"Plan-then-apply administration of a Looker instance: users, groups, roles, folder permissions, user attributes, schedules and content. Every write is previewed as a plan before it is applied, every write command has a real dry run, and the same operations are exposed as a CLI and as an MCP server for agents.",
     proj3_title:"Cost audit agent for Google Cloud",
@@ -1213,7 +1223,9 @@ const i18n = {
     status_prod:"En producción", status_use:"En uso", status_dev:"En desarrollo", status_done:"Entregado",
     yr_now:"actualidad",
     proj1_title:"Agente de IA para desarrolladores de Looker sobre BigQuery",
-    proj1_text:"Un agente que vive dentro de Looker como extensión. A partir de una petición en lenguaje natural produce un proyecto LookML completo (vistas, explores, modelos, Looks y dashboards) validando cada paso contra Looker y BigQuery, diagnostica dashboards existentes y responde preguntas sobre la capa semántica, actuando con los permisos del usuario que pregunta. Un agente en Python sobre Google ADK y un servidor MCP para la API de Looker, ambos en Cloud Run, y una extensión en React servida por Looker; en producción en una instalación de referencia.",
+    proj1_text:"Un agente que vive dentro de Looker como extensión. A partir de una petición en lenguaje natural produce un proyecto LookML completo (vistas, explores, modelos, Looks y dashboards) validando cada paso contra Looker y BigQuery, diagnostica dashboards existentes y responde preguntas sobre la capa semántica, actuando con los permisos del usuario que pregunta. Un agente en Python sobre Google ADK en Cloud Run, el servidor MCP de la siguiente tarjeta y una extensión en React servida por Looker; en producción en una instalación de referencia.",
+    proj8_title:"Servidor MCP para la API de Looker",
+    proj8_text:"Un servidor Model Context Protocol para la API de Looker, abierto a cualquier cliente MCP (un agente, Claude, Gemini o el IDE de un desarrollador), construido para producción y no para una demo. Diez grupos de herramientas, de consultas y explores a LookML, git y administración; sesiones por usuario que mantienen el modo de desarrollo de cada desarrollador donde lo dejó; los mismos nombres y capacidades que el MCP Toolbox de Google para Looker, con carpetas, administración y actualización y borrado de contenido además; y puertas que rechazan las operaciones irreversibles salvo que se habiliten explícitamente. Es el brazo de Looker del agente anterior y corre junto a él en Cloud Run.",
     proj2_title:"Herramientas de administración de Looker",
     proj2_text:"Administración de una instancia de Looker en dos pasos, plan y aplicación: usuarios, grupos, roles, permisos de carpeta, atributos de usuario, programaciones y contenido. Cada escritura se previsualiza como un plan antes de aplicarse, cada comando que escribe tiene un dry run real, y las mismas operaciones se exponen como CLI y como servidor MCP para agentes.",
     proj3_title:"Agente de auditoría de costes en Google Cloud",
