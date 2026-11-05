@@ -21,7 +21,7 @@ CI (`Validate`, `.github/workflows/ci.yml`) refuses invalid HTML in either page,
 ## Conventions
 
 - **Language.** The content is English by default with Spanish, by audience: the text lives in the `en` and `es` dictionaries of the `i18n` object at the end of `index.html`, with the same keys, and each translatable element carries `data-i18n="<key>"`; the English default in the HTML stays aligned with `en`. The working documents — README, this file, the rules, code comments and commit subjects — are English; Spanish text quoted from the content stays Spanish.
-- **Design.** The design tokens (palette, type, chips, buttons, motion) mirror `DESIGN.md` of `Coabana/coabana.github.io`, the canonical source, copied by hand into the `<style>` of `index.html`. The JSON-LD names Coabana as the affiliation, and a call to action links to https://coabana.github.io/.
+- **Design.** The design tokens (palette, type, chips, buttons, motion) mirror `brand/DESIGN.md` of `Coabana/coabana-brand`, the source of record since 2026-11-05, which the Coabana site's own `DESIGN.md` also mirrors; they are copied by hand into the `<style>` of `index.html`. The JSON-LD names Coabana as the affiliation, and a call to action links to https://coabana.github.io/.
 - **Commits.** The whole subject line at most 72 characters, no trailing period. Authored as `Roanny Lamas <roannylamaslopez@gmail.com>`, set in this checkout's local git config; the employer's address is never used here.
 - **Landing.** Work on a branch, open a pull request, and land it on `main` by fast-forward (`git push origin <branch>:main`) once `Validate` is green on its head. No merge commits, no force push, no remote-ref deletion.
 
