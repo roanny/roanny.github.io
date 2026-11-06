@@ -10,7 +10,7 @@ Two rulesets guard `main`: "Protect main branch" (24806684: no deletion, no forc
 
 ## The one coupling
 
-The `DESIGN.md` that `AGENTS.md` § Conventions names is `coabana-site`'s (checkout `coabana/`), whose `CLAUDE.md` says the same from its side. Before stating what that file holds now, read it or verify it with the `contract-checker` agent.
+The `DESIGN.md` that `AGENTS.md` § Conventions names is `brand/DESIGN.md` of `coabana-brand` (checkout `coabana-brand/`, a private repository), the design-token source of record. `coabana-site`'s `DESIGN.md` (checkout `coabana/`) mirrors the same file, and its `CLAUDE.md` names this session as the CV that mirrors it too. Before stating what either file holds now, read it or verify it with the `contract-checker` agent.
 
 ## Index
 
