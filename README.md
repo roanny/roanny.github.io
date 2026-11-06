@@ -44,7 +44,7 @@ Everything lives in `index.html`. The bilingual text is in the **`i18n`** object
 
 ## Design system
 
-The site shares its identity with [Coabana](https://coabana.github.io/): the same Caribbean-tech palette, typefaces, chips, buttons and motion. The canonical reference for tokens and components is `brand/DESIGN.md` in `Coabana/coabana-brand` (a private repository), the source of record since 2026-11-05; the [`DESIGN.md` of the Coabana site](https://github.com/Coabana/coabana.github.io/blob/main/DESIGN.md) mirrors it. A token changed there is copied by hand into the `<style>` of `index.html`.
+The site shares its identity with [Coabana](https://coabana.github.io/): the same Caribbean-tech palette, typefaces, chips, buttons and motion. The canonical reference for tokens and components is `brand/DESIGN.md` in `Coabana/coabana-brand` (a private repository), the source of record since 2026-11-05; the [`DESIGN.md` of the Coabana site](https://github.com/Coabana/coabana.github.io/blob/main/DESIGN.md) mirrors it. A token changed there is copied by hand into the `<style>` of `index.html`. The inline glyph in the navigation is painted from `--glyph-coral`, `--glyph-turquoise` and `--glyph-cyan`, not from the accents: in the dark theme they equal the accents, and in the light theme they keep the brand's light-variant literals, so the mark does not change when the light accents do. Links inside running text are underlined, because the accent alone does not stand out from the body text.
 
 ## SEO
 

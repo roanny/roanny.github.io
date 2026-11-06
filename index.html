@@ -118,6 +118,11 @@
   --cyan: #4cc9f0;
   --coral: #ff8f6b;
   --sand: #f4d58d;
+  /* The glyph's colours (.brand-glyph): the accents in dark; in light, the
+     brand's light-variant literals, which do not follow the accents */
+  --glyph-coral: var(--coral);
+  --glyph-turquoise: var(--turquoise);
+  --glyph-cyan: var(--cyan);
 
   --grad-sea: linear-gradient(92deg, var(--turquoise), var(--cyan));
 
@@ -170,6 +175,9 @@
   --cyan: #0e7398;
   --coral: #b94525;
   --sand: #85661c;
+  --glyph-coral: #c94b28;
+  --glyph-turquoise: #0b8b7d;
+  --glyph-cyan: #0f7ea6;
 
   --raise: rgba(9, 55, 66, 0.03);
   --raise-strong: rgba(9, 55, 66, 0.045);
@@ -819,9 +827,9 @@ html.js .reveal.visible { opacity: 1; transform: none; }
   <div class="nav-inner">
     <a class="brand" href="#top" aria-label="roanny.github.io — home">
       <svg class="brand-glyph" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <circle cx="33" cy="14" r="7" fill="var(--coral)"/>
-        <path d="M6 30c6-4 12-4 18 0s12 4 18 0" stroke="var(--turquoise)" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <path d="M10 40c5-3 10-3 15 0s10 3 15 0" stroke="var(--cyan)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="33" cy="14" r="7" fill="var(--glyph-coral, var(--coral))"/>
+        <path d="M6 30c6-4 12-4 18 0s12 4 18 0" stroke="var(--glyph-turquoise, var(--turquoise))" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M10 40c5-3 10-3 15 0s10 3 15 0" stroke="var(--glyph-cyan, var(--cyan))" stroke-width="3" fill="none" stroke-linecap="round"/>
       </svg>
       <span class="brand-name">roanny.github.io</span>
     </a>
