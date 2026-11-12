@@ -14,7 +14,7 @@ The `DESIGN.md` that `AGENTS.md` § Conventions names is `brand/DESIGN.md` of `c
 
 ## Index
 
-- `.claude/rules/git-hygiene.md` — linear history, the 72-character subject, the commit author, no force push or remote-ref deletion, landing as a deploy, the two rulesets, Dependabot, the round authorization, the deny floor (every session).
+- `.claude/rules/git-hygiene.md` — linear history, the 72-character subject, the commit author, no force push, the session's own remote branches, landing as a deploy, the two rulesets, Dependabot, the fleet's authorization block and this repository's remainder, the deny floor (every session).
 - `.claude/rules/rules-discipline.md` — what a rule file may hold (fleet shared block).
 - `.claude/rules/markdown-docs.md` — the shape of the Markdown working documents (fleet shared block).
 - No commands and no agents: there is no release and no code to review beyond the page's script.
