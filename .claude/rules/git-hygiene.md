@@ -35,6 +35,7 @@ The standing authorization of 2026-09-23 covers this repository's Dependabot hea
 - **Landing convention**: a branch, a pull request, and the fast-forward `git push origin <branch>:main` once `Validate` is green on the pull request's head SHA (§ History and landing). A head that touches only `.github/` or `.claude/` leaves the published pages unchanged, and the session lands it on its own; Dependabot heads land under § Dependabot.
 - **Gate**: the three commands of `AGENTS.md` § Previewing and checking — `npx --yes html-validate@11.16.0 --config .github/htmlvalidate.json index.html 404.html`, `python3 .github/scripts/check_site.py i18n`, `python3 .github/scripts/check_site.py sitemap` — which `Validate` runs with the shared-block, commit-subject and commit-author steps.
 - **The operator's here, because it cannot be undone from this repository**: a landing that changes what a visitor sees, because GitHub Pages publishes it within minutes and LinkedIn, WhatsApp and X cache what they fetched (the public site is this repository's PRO); the session prepares the pull request green and queues the landing. Renaming or removing `googlede4b53d1c977dbfc.html`, the Search Console verification.
+- **Tags**: the `deny` floor refuses the deletion of a tag by name (`v*` or `refs/tags/*`, after `--delete` or `-d`), while a session's own branches are its to delete.
 
 ## The deny floor
 
